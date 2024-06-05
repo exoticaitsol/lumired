@@ -1,0 +1,86 @@
+<div class="site-mobile-nav" id="site-mobile-nav" data-mobile-nav tabindex="0">
+  <div class="mobile-nav-panel" data-mobile-nav-panel>
+
+    {% render 'site-header-actions' %}
+
+    <a
+      class="mobile-nav-close"
+      href="#site-header-nav"
+      data-mobile-nav-close>
+      {% render 'icon-menu-close' %}
+      <span class="visually-hidden">{{ 'general.accessibility.close' | t }}</span>
+    </a>
+
+    <div class="mobile-nav-content" data-mobile-nav-content>
+      <ul class="cstm-account" data-header-actions>
+  {% if shop.customer_accounts_enabled %}
+    {% unless customer %}
+      <li>
+        <!-- <span class="site-header__account-icon">
+          {% render 'icon-library', id: 'icon-account' %}
+        </span> -->
+        <a href="{{ routes.account_login_url }}" class="site-header_account-link-text vm-icon-wrapper">
+          <!-- {{ 'header.account.login' | t }} -->
+           <span class="site-header__account-icon-mobile">
+            <!-- {% render 'icon-library', id: 'icon-account' %} -->
+            {% render 'vm-icons' with icon: 'login' %} 
+          </span>
+        </a>
+      </li>
+    {% else %}
+      <li>
+        <!-- <span class="site-header__account-icon">
+          {% render 'icon-library', id: 'icon-account' %}
+        </span> -->
+        <span class="site-header__account-links">
+         <a href="{{ routes.account_url }}" class="site-header__account-link--account">
+            <span class="site-header__account-icon">
+              <!-- {% render 'icon-library', id: 'icon-account' %} -->
+              {% render 'vm-icons' with icon: 'login' %} 
+            </span>
+          </a>
+         <a href="{{ routes.account_logout_url }}" class="site-header__account-link--logout" data-no-instant>{{ 'header.account.logout' | t }}</a>
+        </span>
+      </li>
+    {% endunless %}
+  {% endif %}
+</ul>
+      {%
+        render 'mobile-nav-list',
+        menu: section.settings.menu,
+        blocks: blocks,
+      %}
+
+      {% if section.settings.secondary_menu != blank %}
+        <span class="mobile-nav-content__border"></span>
+        <div class="mobile-nav-content__secondary-menu">
+          {%
+            render 'navlist',
+            menu_list: linklists[section.settings.secondary_menu].links,
+            depth: 1,
+            max_depth: 1,
+            aria_expanded: true,
+          %}
+        </div>
+      {% endif %}
+    </div>
+    <a class="mobile-mail"
+        href="{{ section.settings.mail_link }}"><img data-wpsob="1" data-wpsob-height="1" height="1" data-wpsob-width="1" width="1" data-wpsob-lazy="1" loading="lazy" src="{{ section.settings.mail_icon | img_url: 'original' }}" >
+ {{ section.settings.mail_text }}
+        </a>
+      <div class="vm-site-header-right-mobile">   
+     {% for block in section.blocks %}
+     {% if block.type == 'top_icon' %}
+     <div class="small-promo">
+      <a class="icon"  href="{{ block.settings.icon_link }}"><img data-wpsob="1" data-wpsob-height="1" height="1" data-wpsob-width="1" width="1" data-wpsob-lazy="1" loading="lazy" src="{{ block.settings.icon | img_url: 'original' }}" ></a>
+      </div> 
+     {% endif %}
+       {% endfor %}
+  </div>
+    <div class="utility-bar__mobile-disclosure" data-utility-mobile>
+</div>
+ </div>
+ <div class="mobile-nav-overlay" data-mobile-nav-overlay></div>
+  
+</div>
+

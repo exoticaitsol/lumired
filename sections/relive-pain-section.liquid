@@ -1,0 +1,62 @@
+<section class="relive_pain py_9">
+  <div class="container">
+    <div class="row">
+      {% for block in section.blocks %}
+        <div class="col-md-3 mb-4">
+          <div class="relieve_pain_txt">
+            <div class="relieve_img">
+              <img
+                class="lazyload"
+                src="{{ block.settings.img| img_url: 'master' }}"
+                alt="{{ block.settings.img }}"
+                width="{{ block.settings.img.width }}"
+                height="{{ block.settings.img.height }}"
+                loading="lazy"
+              >
+              <p>{{ block.settings.title }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Relive Pain Section",
+  "settings": [],
+  "blocks": [
+  {
+    "type": "Relive_Pain",
+    "name": "Relive_Pain",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+
+      },
+      {
+      "type": "image_picker",
+      "id": "img",
+      "label":"Image"
+    }
+
+    ]
+  }
+],
+
+   "presets": [
+     {
+     "name": "Relive Pain Section"
+     }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

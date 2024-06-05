@@ -1,0 +1,55 @@
+<section class="product-comparision">
+  <div class="image-with-text p-tb">
+    <div class="comparision-heading">
+      <h2>{{ section.settings.compare_models_heading }} </h2>
+      <p>{{ section.settings.compare_subheading }}</p>
+    </div>
+    <div class="comparision-table">
+      <div class="comparision-table">
+        <div>
+          {{ section.settings.table-comparision }}
+        </div>
+   
+  </div>
+    </div>
+  </div>
+  
+</section>
+{% schema %}
+  {
+  "name": "Comparision Table",
+  "settings": [
+    {
+      "type": "text",
+      "id": "compare_models_heading",
+      "label": "Compare Models Heading",
+      "default": "LumiPro Range",
+      "placeholder": "LumiPro Range",
+      "info": "Add the Product Range Name that are compairing"
+    },
+    {
+      "type": "text",
+      "id": "compare_subheading",
+      "label": "Compare Subheading",
+      "default": "Compare Models",
+      "placeholder": "Compare Models"
+    },
+    {
+      "type": "html",
+      "id": "table-comparision",
+      "label": "Table Box"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparision Table"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

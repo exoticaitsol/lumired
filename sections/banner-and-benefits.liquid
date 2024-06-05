@@ -1,0 +1,36 @@
+    <section
+        class="hero_banner_about bg_style"
+        style="background-image: url('{{ section.settings.banner | img_url: 'master' }}')" >
+        <div class="container">
+          <div class="hero_txt_about">
+            <div class="hero_txt_under">
+              <h1>{{ section.settings.title }}</h1>
+            </div>
+          </div>
+        </div>
+     </section>
+     
+      
+{% schema %}
+  {
+    "name": "benefits Banner",
+    "settings": [
+       {
+        "type": "image_picker",
+        "id": "banner",
+        "label":"banner_image"
+      },
+     {
+        "type": "text",
+        "id": "title",
+        "label":"Heading"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,128 @@
+<section class="Therapy_energises py_9">
+  <div class="container">
+    <div class="heading_therpy">
+      <h2>
+        {{ section.settings.main }}
+      </h2>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 mb-4 mb-xl-0">
+        <div class="therpy_image">
+          <img
+            class="lazyload"
+            src="{{ section.settings.therpy_image| img_url: 'original' }}"
+            alt="{{ section.settings.therpy_image }}"
+            width="{{ section.settings.therpy_image.width }}"
+            height="{{ section.settings.therpy_image.height }}"
+            loading="lazy"
+          >
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7 mb-4 mb-xl-0">
+        <div class="row align-items-center">
+          <div class="col-md-6 mb-4">
+            <div class="process_like_works">
+              <div class="img_process">
+                <img
+                  class="lazyload"
+                  src="{{ section.settings.frame_image| img_url: 'original' }}"
+                  alt="{{ section.settings.frame_image }}"
+                  width="{{ section.settings.frame_image.width }}"
+                  height="{{ section.settings.frame_image.height }}"
+                  loading="lazy"
+                >
+
+                {{ section.settings.description }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <ul class="process_ul">
+              {% for block in section.blocks %}
+                <li>
+                  <div class="process_like_works">
+                    <div class="img_process">
+                      <img
+                        class="lazyload"
+                        src="{{ block.settings.img| img_url: 'master' }}"
+                        alt="{{ block.settings.img }}"
+                        width="{{ block.settings.img.width }}"
+                        height="{{ block.settings.img.height }}"
+                        loading="lazy"
+                      >
+
+                      {{ block.settings.description }}
+                    </div>
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+ {
+   "name": "Therapy Section",
+   "settings": [
+{
+       "type": "text",
+       "id": "main",
+       "label":"Heading"
+     },
+
+     {
+       "type": "image_picker",
+       "id": "therpy_image",
+       "label":"Therpy Image"
+     },
+     {
+       "type": "image_picker",
+       "id": "frame_image",
+       "label":"Frame Image"
+     },
+     {
+       "type": "richtext",
+       "id": "description",
+       "label":"Description"
+     }
+
+   ],
+   "blocks": [
+   {
+     "type": "process_like_works",
+     "name": "process_like_works",
+     "settings": [
+
+       {
+       "type": "image_picker",
+       "id": "img",
+       "label":" Image"
+     },
+        {
+         "type": "richtext",
+         "id": "description",
+         "label": "Description"
+
+       }
+
+     ]
+   }
+ ],
+
+    "presets": [
+      {
+      "name": "Therapy Section"
+      }
+    ]
+ }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

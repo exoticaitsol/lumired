@@ -1,0 +1,99 @@
+<product-comparison>
+    <div class="product-comparison product-comparison--{{ section.id }}">
+        <h2 class="home-section--title">{{ section.settings.heading }}</h2>
+        <h3 class="home-section--subtitle">{{ section.settings.subheading }}</h3>
+    
+        <div class="product-comparison__content">
+            <div class="comparison-content__labels">
+                <p>Product</p>
+                <p>Price</p>
+                <p>Led Power</p>
+                <p class="comparison-product__dynamic-height--best-for">Best For</p>
+                <p>Lifespan</p>
+                <p class="comparison-product__dynamic-height--warranty">Warranty</p>
+            </div>
+            <div class="comparison-content__products">
+                {% for block in section.blocks %}
+                    {% assign product = all_products[block.settings.product] %}
+                    <div class="comparison-product">
+                        <div class="comparison-product__image">
+                            {%
+                                render 'rimg',
+                                img: product.featured_image,
+                                size: '250x'
+                              %}
+                        </div>
+                        <h4 class="comparison-product__title">
+                            {{ product.title }}
+                        </h4>
+                        <div class="comparison-product__price">
+                            <p>{{ product.selected_or_first_available_variant.price | money }}</p>
+                            {% render 'vm-button', button_color: 'white', button_label: 'View Product' , button_link: product.url %}
+                        </div>
+                        <div class="comparison-product__details">
+                            <p><span class="comparison-details__label">Led Power</span>{% if product.metafields.comparison.led_power != blank %}{{ product.metafields.comparison.led_power }}{% else %}-{% endif %}</p>
+                            <p class="comparison-product__dynamic-height--best-for"><span class="comparison-details__label">Best For</span>{% if product.metafields.comparison.best_for != blank %}{{ product.metafields.comparison.best_for }}{% else %}-{% endif %}</p>
+                            <p><span class="comparison-details__label">Lifespan</span>{% if product.metafields.comparison.lifespan != blank %}{{ product.metafields.comparison.lifespan }}{% else %}-{% endif %}</p>
+                            <p class="comparison-product__dynamic-height--warranty"><span class="comparison-details__label">Warranty</span>{% if product.metafields.comparison.warranty != blank %}{{ product.metafields.comparison.warranty }}{% else %}-{% endif %}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</product-comparison>
+
+{% style %}
+    .product-comparison--{{ section.id }} {
+        padding-block: {{ section.settings.padding_block }}px;
+    }
+{% endstyle %}
+
+{% schema %}
+      {
+        "name": "Product Comparison",
+        "max_blocks": 3,
+        "settings": [
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading",
+                "default": "Product Comparison"
+            },
+            {
+                "type": "text",
+                "id": "subheading",
+                "label": "Subheading",
+                "default": "What's the difference in the products?"
+            },
+            {
+                "type": "range",
+                "id": "padding_block",
+                "min": 0,
+                "max": 100,
+                "step": 10,
+                "unit": "px",
+                "label": "Section spacing top/bottom",
+                "default": 40
+            }
+        ],
+        "blocks": [
+            {
+                "type": "product",
+                "name": "Product",
+                "settings": [
+                    {
+                        "type": "product",
+                        "id": "product",
+                        "label": "Product"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Product Comparison"
+            }
+        ]
+    }
+{% endschema %}

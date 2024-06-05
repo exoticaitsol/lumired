@@ -1,0 +1,33 @@
+ 
+{% if request.host =="lumired.co.uk" %}
+<section class="friday_sale_banner">
+         <div class="sales_banner">
+             <img data-wpsob="1" data-wpsob-height="1" height="1" data-wpsob-width="1" width="1" data-wpsob-lazy="1" loading="lazy" src="{{ section.settings.uk_image | img_url: 'original' }}" alt="">
+          </div>
+      </section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "UK TOP Banner",
+    "settings": [
+      
+        {
+          "type": "image_picker",
+          "id": "uk_image",
+          "label": "UK BannerImage"
+        } 
+    ],
+     "presets": [
+    {
+      "name": "UK TOP Banner"
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

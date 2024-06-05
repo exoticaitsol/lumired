@@ -1,0 +1,54 @@
+{%- if section.settings.background-img != blank -%}
+        {%- assign img_url = section.settings.background-img | img_url: '  ' -%}   
+         <style>
+         section.full-width-banner{
+            background: url('{{ img_url }}');
+            background-repeat: no-repeat;
+    background-size: cover;
+            
+          }
+        </style>
+ <section class="full-width-banner">
+    {%- assign background-img = section.settings.background-img -%}
+            <div class="full-width-banner-container">
+                <div class="full-width-banner-row">
+                    <div class="full-width-banner-content">
+                        <p>{{ section.settings.banner-heading }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {%- endif -%}
+{% schema %}
+  {
+    "name": "Full Body Banner",
+    "settings": [
+    {
+      "type": "text",
+      "id": "banner-heading",
+      "label": "Banner Heading",
+      "default": "Banner Heading",
+      "placeholder": "Banner Heading",
+      "info": "Banner Heading"
+    },
+    {
+          "type": "image_picker",
+          "id": "background-img",
+          "label": "Background Img",
+          "info": "Background Image"
+        }
+  ],
+  "presets": [
+    {
+      "name": "Full Body Banner"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+ 
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

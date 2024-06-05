@@ -1,0 +1,71 @@
+<section class="icons-with-four-boxes">
+            <div class="icons-with-four-boxes-container">
+                <div class="icons-with-four-boxes-row">
+                    <div class="icons-with-four-boxes-list">
+                        <div class="box-with-only-description">
+                            <p>
+                              {{ section.settings.icon_heading }}
+                                
+                            </p>
+                        </div>
+                       {%- for block in section.blocks -%}
+                        {%- case block.type -%}
+
+                          {%- when 'icon_blocks' -%}
+                        <div class="box-with-icons-description">
+                            {%- assign block_icons = block.settings.block_icons -%}
+                              {{ block_icons | image_url: width: block_icons.width | image_tag: class: 'add_your_class_here', loading: 'lazy' }}
+                            <p>{{ block.settings.block_head }}</p>
+                        </div>
+                            {%- endcase -%}
+                          {%- endfor -%}
+                       
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+       
+{% schema %}
+  {
+    "name": "Benifits Icons",
+    "settings": [
+      {
+          "type": "text",
+          "id": "icon_heading",
+          "label": "Icon Heading"
+        }
+    ],
+     "blocks": [
+    {
+      "name": "Icon Blocks",
+      "type": "icon_blocks",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "block_icons",
+          "label": "Block icons",
+          "info": "Block icons"
+        },
+        {
+          "type": "text",
+          "id": "block_head",
+          "label": "Block Head"
+        }
+      ]
+    }
+  ],
+     "presets": [
+    {
+      "name": "Benifits Icons"
+    }
+  ]
+}
+  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

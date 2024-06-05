@@ -1,0 +1,307 @@
+      <section
+        class="hero_banner_about bg_style"
+        style="background-image: url('{{ section.settings.banner | img_url: 'master' }}')">
+        <div class="container">
+          <div class="hero_txt_about">
+            <div class="hero_txt_under">
+              <h1>{{ section.settings.title }}</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="get_touch_sec py_9 pb-0">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="get_cntnt">
+                <div class="txt_get_touch">
+                  <h1>{{ section.settings.form_title }}</h1>
+                  <p>
+                   {{ section.settings.description }}
+                  </p>
+                  {% if request.host contains 'lumired.ie' %}
+                  <ul>
+                     {% for block in section.blocks %}
+                      {% if block.type == 'details' %}
+                    <li>
+                      <div class="d_flex_arrow">
+                        <div class="loc_img">
+                          <img src="{{ block.settings.icon | img_url: 'master' }}" alt="" />
+                        </div>
+                        <p>
+                           {% if block.settings.link != blank %}
+                        <a href="{{ block.settings.link }}">{% endif %}
+                          {{ block.settings.detail }}
+                        {% if block.settings.link != blank %}
+                        </a>
+                          {% endif %}
+                           </p>
+                      </div>
+                    </li>
+                        {% endif %}
+                        {% endfor %}
+                   
+                  </ul>
+                  {% endif %}
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+    {% form 'contact' %}
+
+    {% if page.content != blank %}
+      <div class="page-content rte">
+        {{ page.content }}
+      </div>
+    {% endif %}
+
+    <div class="contact-page-content">
+      {% assign has_message = false %}
+
+      {% if form.errors != blank %}
+        {% assign has_message = true %}
+        {% assign message_type = 'error' %}
+      {% endif %}
+
+      {% if form.posted_successfully? %}
+        {% assign has_message = true %}
+        {% assign message_type = 'success' %}
+      {% endif %}
+
+      {% if has_message %}
+        <div class="contact-message message--{{ message_type }}">
+          {% case message_type %}
+            {% when 'success' %}
+              <p>
+                {{ 'contact.form.post_success' | t }}
+              </p>
+            {% when 'error' %}
+              {{ form.errors | default_errors }}
+          {% endcase %}
+        </div>
+      {% endif %}
+
+      <div class="form-fields-columns">
+        <div class="form-field form-field--half">
+          {% assign value = '' %}
+          {%- if form.name -%}
+            {% assign value = form.name %}
+          {%- elsif customer -%}
+            {% assign value = customer.name %}
+          {%- endif -%}
+
+          <input
+            class="form-field-input form-field-text {% if form.errors contains 'name' %}form-field-error{% endif %}"
+            id="contact_name"
+            name="contact[name]"
+            type="text"
+            value="{{ value }}">
+
+          <label class="form-field-title" for="contact_name">
+            {{ 'contact.form.name' | t }}
+          </label>
+        </div>
+
+        <div class="form-field form-field--half">
+          {% assign value = '' %}
+          {%- if form.email -%}
+            {% assign value = form.email %}
+          {%- elsif customer -%}
+            {% assign value = customer.email %}
+          {%- endif -%}
+          <input
+            class="form-field-input form-field-text {% if form.errors contains 'email' %}form-field-error{% endif %}"
+            id="contact_email"
+            name="contact[email]"
+            type="text"
+            value="{{ value }}"
+            autocorrect="off"
+            autocapitalize="off">
+
+          <label class="form-field-title" for="contact_email">
+            {{ 'contact.form.email' | t }}
+          </label>
+        </div>
+      </div>
+
+      <div class="form-field">
+        {% assign value = '' %}
+        {%- if form.phone -%}
+          {% assign value = form.phone %}
+        {%- elsif customer -%}
+          {% assign value = customer.phone %}
+        {%- endif -%}
+
+        <input
+          class="form-field-input form-field-text {% if form.errors contains 'phone' %}form-field-error{% endif %}"
+          id="contact_phone"
+          name="contact[phone]"
+          type="tel"
+          value="{{ value }}">
+
+        <label class="form-field-title" for="contact_phone">
+          {{ 'contact.form.phone' | t }}
+        </label>
+      </div>
+
+      <div class="form-field">
+        {% assign value = '' %}
+        {%- if form.body -%}
+          {% assign value = form.body %}
+        {%- endif -%}
+        <textarea
+          class="form-field-input form-field-textarea {% if form.errors contains 'body' %}form-field-error{% endif %}"
+          id="contact_message"
+          name="contact[message]">{{ value }}</textarea>
+
+        <label class="form-field-title" for="contact_body">
+          {{ 'contact.form.message' | t }}
+        </label>
+      </div>
+
+      <div class="form-action-row">
+        <button class="button-primary contact-form-button" type="submit">
+          {{ 'contact.form.send' | t }}
+        </button>
+          <!-- <div class="scdeule_call_from">
+                <div class="img_called_sec">
+                  <img src="{{ section.settings.call_icon | img_url: 'master' }}" alt="" />
+                 {{ section.settings.call_text }}
+                </div>
+              </div> -->
+      </div>
+    </div>
+  {% endform %}
+
+            </div>
+          </div>
+        </div>
+      </section>
+      
+       <!-- <section class="schedule_our_expert py_9">
+        <div class="container">
+          <div class="schedule_expert_sec">
+            <div class="schedule_txt">
+              <h2>{{ section.settings.schedule_call_txt }}</h2>
+              <div class="schedule_sec_btn">
+                <a href="{{ section.settings.btn_url }}" class="theme_btn"> {{ section.settings.btn_title }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="calendly-section rich-text--container calendly-section--template--15775496634538__1660118652d8fc6939"> -->
+
+
+    <section class="schedule_our_expert py_9">
+        <div class="container">
+          <div class="schedule_expert_sec">
+            <div class="schedule_txt">
+              <h2>{{ section.settings.schedule_call_txt }}</h2>
+              <div class="schedule_sec_btn">
+                  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+                  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async=""></script>
+                <a href=""onclick="Calendly.initPopupWidget({url: 'https://calendly.com/hello-5667'});return false;"
+                  class="theme_btn"> {{ section.settings.btn_title }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- <section class="calendly-section rich-text--container calendly-section--template--15775496634538__1660118652d8fc6939">
+ <div class="calendly "><p>Want to schedule a call with our expert? Book a slot:</p>
+   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async=""></script>
+    <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/hello-5667'});return false;"> Get help from our expert</a>
+  </div>
+</section> -->
+
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": [
+       {
+        "type": "image_picker",
+        "id": "banner",
+        "label":"banner_image"
+      },
+     {
+        "type": "text",
+        "id": "title",
+        "label":"Heading"
+      },
+       {
+        "type": "textarea",
+        "id": "schedule_call_txt",
+        "label":"Schedule Call Text"
+      },
+       {
+        "type": "text",
+        "id": "btn_title",
+        "label":"Button Title"
+      },
+       {
+        "type": "url",
+        "id": "btn_url",
+        "label":"Button URL"
+      },
+       {
+        "type": "text",
+        "id": "form_title",
+        "label":"Form Title"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label":"form Description"
+      },
+      {
+        "type": "image_picker",
+        "id": "call_icon",
+        "label":"Icon before schedule call text"
+      },
+      {
+        "type": "text",
+        "id": "call_text",
+        "label":"schedule call text"
+      }
+      
+      
+    ],
+     "blocks": [
+      
+     {
+       "name": "details",
+       "type": "details",
+       "settings": [
+          {
+           "type": "image_picker",
+           "id": "icon",
+           "label": "Add Icon"
+         },
+         {
+           "type": "text",
+           "id": "detail",
+           "label": "Add detail"
+         },
+         {
+           "type": "url",
+           "id": "link",
+           "label": "Add detail Link"
+         }
+       ]
+     }
+
+  ]
+       
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,114 @@
+    <section class="modern_medicine_sec py_9">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-7">
+              <div class="modern_txt_under">
+                <div class="txt_sec">
+                  <h2>{{ section.settings.title}}</h2>
+                
+                    {{ section.settings.description}} 
+
+                  <ul class="pro_duct_dis">
+                     {% for block in section.blocks %}
+                    <li>
+                      <div class="pro_duct_dis_info">
+                        <img data-wpsob="1" data-wpsob-height="1" height="1" data-wpsob-width="1" width="1" data-wpsob-lazy="1" loading="lazy" src="{{ block.settings.list_img | img_url: 'master'}}" alt="" />
+                        <p>
+                           {{ block.settings.list }}
+                        </p>
+                      </div>
+                    </li>
+                     {% endfor %}
+                  
+                  </ul>
+                   <div class="modern-med">
+                  <p>
+                   {{ section.settings.note_title}}
+                  </p>
+                   </div>
+                </div>
+                <div class="modern-btn">
+                  <a href="{{ section.settings.btn_url}}" class="theme_btn">{{ section.settings.btn_text}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="img_modern">
+                <img data-wpsob="1" data-wpsob-height="1" height="1" data-wpsob-width="1" width="1" data-wpsob-lazy="1" loading="lazy" src="{{ section.settings.img | img_url: 'master'}}" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+     {% schema %}
+  {
+    "name": "Modern Medicine Section ",
+    "settings": [
+       
+      {
+        "type": "text",
+        "id": "title",
+        "label":"Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label":"Description"
+      },
+       {
+        "type": "text",
+        "id": "btn_text",
+        "label":"Button Text"
+      },
+       {
+        "type": "url",
+        "id": "btn_url",
+        "label":"Button url"
+      },
+      
+       {
+        "type": "image_picker",
+        "id": "img",
+        "label":"Image"
+      },
+      {
+        "type": "text",
+        "id": "note_title",
+        "label":" Not Heading"
+      }
+    ],
+    "blocks": [
+    {
+      "type": "Medicine_list",
+      "name": "Medicine_list",
+      "settings": [
+        {
+          "type": "text",
+          "id": "list",
+          "label": "List"
+          
+        },
+        {
+        "type": "image_picker",
+        "id": "list_img",
+        "label":"List Image"
+      }
+       
+      ]
+    }
+  ],
+    
+     "presets": [
+       {
+       "name": "Modern Medicine Section"
+       }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

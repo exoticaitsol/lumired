@@ -1,0 +1,154 @@
+<section class="testimonial_slider py_9">
+        <div class="container">
+          <div class="main_custom-txt">
+            <div class="tittle_heading_say">
+              <h2>{{ section.settings.main}}</h2>
+            </div>
+            <ul class="flex_arrow">
+              <li class="slide_controls_1 text-left">
+                <div
+                  class="slide-prev slick-arrow slick-disabled"
+                  aria-disabled="true"
+                  style=""
+                >
+                  <img src="{{ section.settings.slide-prev | img_url: 'master'}}" />
+                </div>
+                <div
+                  class="slide-next slick-arrow"
+                  aria-disabled="false"
+                  style=""
+                >
+                  <img src="{{ section.settings.slide-next | img_url: 'master'}}" />
+                </div>
+              </li>
+            </ul>
+          </div>
+
+    
+          
+          <div class="slider_testimonial_sec">
+            {% for block in section.blocks %}
+            <div class="slider_under_bx">
+              <div class="slider_under">
+                <div class="slider_txt">
+                  <div class="img_slide">
+                    <img src="{{ block.settings.img | img_url: 'master'}}" alt="" />
+                    {{ block.settings.description }}
+
+                    <h2>{{ block.settings.heading }}</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <!-- <div class="slider_under_bx">
+              <div class="slider_under">
+                <div class="slider_txt">
+                  <div class="img_slide">
+                    <img src="assets/img/slider_img_3.png" alt="" />
+                    <p>
+                      I can't express just how happy I am with the results so
+                      far. I've only been using the Lumipro 750 for 3 weeks now
+                      and it's amazing.
+                    </p>
+
+                    <h2>Hazel Fitzpatrick</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slider_under_bx">
+              <div class="slider_under">
+                <div class="slider_txt">
+                  <div class="img_slide">
+                    <img src="assets/img/slider_img_2.png" alt="" />
+                    <p>
+                      I can't express just how happy I am with the results so
+                      far. I've only been using the Lumipro 750 for 3 weeks now
+                      and it's amazing.
+                    </p>
+
+                    <h2>Hazel Fitzpatrick</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slider_under_bx">
+              <div class="slider_under">
+                <div class="slider_txt">
+                  <div class="img_slide">
+                    <img src="assets/img/slider_img_3.png" alt="" />
+                    <p>
+                      I can't express just how happy I am with the results so
+                      far. I've only been using the Lumipro 750 for 3 weeks now
+                      and it's amazing.
+                    </p>
+
+                    <h2>Hazel Fitzpatrick</h2>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </section>
+
+{% schema %}
+  {
+    "name": "Customer Say",
+    "settings": [
+      {
+        "type": "text",
+        "id": "main",
+        "label": " Heading"
+      },
+      {
+        "type": "image_picker",
+        "id": "slide-prev",
+        "label":" Slide prev"
+      },
+      {
+        "type": "image_picker",
+        "id": "slide-next",
+        "label":" Slide Next"
+      }
+    ],
+     "blocks": [
+    {
+      "type": "slider_testimonial_sec",
+      "name": "slider_testimonial_sec",
+      "settings": [
+       
+        {
+        "type": "image_picker",
+        "id": "img",
+        "label":" Image"
+      },
+         {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+          
+        },
+         {
+        "type": "text",
+        "id": "heading",
+        "label": " Heading"
+      }
+       
+      ]
+    }
+  ],
+    "presets": [
+       {
+       "name": "Customer Say"
+       }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

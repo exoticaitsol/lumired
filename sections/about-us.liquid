@@ -1,0 +1,71 @@
+      <section
+        class="hero_banner_about bg_style"
+        style="background-image: url('{{ section.settings.banner | img_url: 'master' }}')">
+        <div class="container">
+          <div class="hero_txt_about">
+            <div class="hero_txt_under">
+              <h1>{{ section.settings.title }}</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="unveiling_sec">
+        <div class="row g-0">
+          <div class="col-md-7">
+            <div class="unveil_sec">
+              <div class="unevil_txt_sec">
+                <h2>{{ section.settings.power_title }}</h2>
+               {{ section.settings.power_description }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="unevil_img">
+              <img src="{{ section.settings.power_img | img_url: 'master' }}" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+     
+
+{% schema %}
+  {
+    "name": "About US",
+    "settings": [
+       {
+        "type": "image_picker",
+        "id": "banner",
+        "label":"banner_image"
+      },
+     {
+        "type": "text",
+        "id": "title",
+        "label":"Heading"
+      },
+       {
+        "type": "image_picker",
+        "id": "power_img",
+        "label":"Undeniable Power image"
+      },
+       {
+        "type": "text",
+        "id": "power_title",
+        "label":"Undeniable Power Title"
+      },
+      {
+        "type": "richtext",
+        "id": "power_description",
+        "label":"Undeniable Power Description"
+      }
+      
+    ]
+    
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

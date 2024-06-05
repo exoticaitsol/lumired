@@ -1,0 +1,99 @@
+{%- if section.settings.background-img != blank -%}
+        {%- assign img_url = section.settings.background-img | img_url: '  ' -%}       
+        
+        <style>
+          .confidence-img{
+            background: url('{{ img_url }}');
+            background-repeat: no-repeat;
+    background-size: cover;
+            background-position: 50% 50%;
+          }
+        </style>
+        <section class="shop-with-confidence confidence-img">
+  <div class="p-tb image-with-text">
+    <div class="confidence-content-heading">
+      <h2>{{ section.settings.confidence-content-heading }} </h2>
+      <div class="confidence-content">
+        {%- for block in section.blocks -%}
+        {%- case block.type -%}
+
+    {%- when 'shop_with_confidence' -%}
+        <div class="confidence-content-box">
+          <div class="c-icon">
+          {%- assign c-icon = block.settings.c-icon -%}
+      {{ c-icon | image_url: width: c-icon.width | image_tag: class: 'add_your_class_here', loading: 'lazy' }}
+        </div>
+        <div class="content-box">
+          <h4>{{ block.settings.content-box_heding }} </h4>
+          <p>{{ block.settings.content_box_detail }} </p>
+        </div>
+        </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+</section>
+    {%- endif -%}
+
+{% schema %}
+  {
+  "name": "Shop With Confidence",
+  "settings": [
+    {
+      "type": "text",
+      "id": "confidence-content-heading",
+      "label": "confidence-content-heading",
+      "default": "Heading"
+    },
+    {
+          "type": "image_picker",
+          "id": "background-img",
+          "label": "Background Img",
+          "info": "Background Image"
+        }
+  ],
+  "blocks": [
+    {
+      "name": "Shop with confidence",
+      "type": "shop_with_confidence",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Conent Box"
+        },
+        {
+          "type": "image_picker",
+          "id": "c-icon",
+          "label": "c-icon",
+          "info": "Img Icon"
+        },
+        {
+          "type": "text",
+          "id": "content-box_heding",
+          "label": "Content Box Heding",
+          "default": "Content box Head",
+          "placeholder": "Demo"
+        },
+        {
+          "type": "textarea",
+          "id": "content_box_detail",
+          "label": "Content Box detail"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop With Confidence Section"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

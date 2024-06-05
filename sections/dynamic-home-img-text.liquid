@@ -1,0 +1,106 @@
+<section class="full_edge-image-with-text">
+            <div class="full_edge-image-with-text-container container-fluid">
+                <div class="full_edge-image-with-text-row">
+                    <div class="full_edge-image-with-text__content">
+                      <div class="full_edge-image-with-text__content-inner">
+                        <h2>{{ section.settings.heading_ }}</h2>
+                        <p>{{ section.settings.content_box }}</p>
+                     
+                        <ul>
+                           {%- for block in section.blocks -%}
+                          {%- case block.type -%}
+
+                          {%- when 'list_' -%}
+                            <li>{{ block.settings.list_items }} </li>
+                            {%- endcase -%}
+                      {%- endfor -%}
+                        </ul>
+                        
+                        <div class="footer-content">
+                            <span>{{ section.settings.footer-content_heading }}</span>
+                            <span><b>{{ section.settings.footer_content }} </b></span>
+                        </div>
+                      <a href="{{ section.settings.link }}" class="vm-button-red">{{ section.settings.linktext }}</a>
+                      
+                      </div>
+                    </div>
+                  {%- assign rigth-image = section.settings.rigth-image -%}
+                    <div class="full_edge-image-with-text__imgwrap" style="background-image: url('{{ rigth-image | image_url }}')">
+                        
+                     
+                    
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% schema %}
+  {
+  "name": "Full width img with text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_",
+      "label": "Heading ",
+      "default": "Heading",
+      "info": "Heading of the section"
+    },
+    {
+      "type": "text",
+      "id": "content_box",
+      "label": "Content Box"
+    },
+    {
+      "type": "image_picker",
+      "id": "rigth-image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "footer-content_heading",
+      "label": "footer-content heading",
+      "default": "Footer Heading"
+    },
+    {
+      "type": "text",
+      "id": "footer_content",
+      "label": "footer content"
+    },
+    {
+      "id": "link",
+      "type": "url",
+      "label": "Button link"
+    },
+    {
+      "id": "linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Click Here"
+    }
+  ],
+    "blocks": [
+    {
+      "name": "list ",
+      "type": "list_",
+      "settings": [
+        {
+          "type": "text",
+          "id": "list_items",
+          "label": "list items",
+          "placeholder": "list items"
+        }
+      ]
+    }
+  ], 
+  "presets": [
+    {
+      "name": "Full width img with text"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

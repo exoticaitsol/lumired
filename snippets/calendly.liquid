@@ -1,0 +1,9 @@
+
+ <div class="calendly {% if border_top %}calendly--border-top{% endif %}">
+   {%- if text -%}
+    <p>{{text}}</p>
+   {%- endif -%}
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/hello-5667'});return false;"> {{inner_text}}</a>
+  </div>

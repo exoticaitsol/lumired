@@ -1,0 +1,79 @@
+<section class="faq-sec">
+  <div class="p-tb image-with-text">
+    <div class="faq-heading">
+      <h2>{{ section.settings.faq_heading }} </h2>
+    </div>
+    
+<!--Accordion Start-->
+<div class="accordion">
+  <!-- First Accordion Start -->
+  {%- for block in section.blocks -%}
+  {%- case block.type -%}
+
+    {%- when 'accordion_' -%}
+  <div class="accordion-section">
+    <a class="accordion-section-title" href="#{{forloop.index0}}"> {{ block.settings.accordion_title }} 
+      <span class="arrow"></span></a>
+    <div id={{forloop.index0}} class="accordion-section-content">
+      <p>{{ block.settings.accordion_content }} </p>
+    </div>
+  </div>
+  {%- endcase -%}
+{%- endfor -%}
+  
+<!--Accordion End-->
+  </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+  "name": "FAQ Accordion",
+  "settings": [
+    {
+      "type": "text",
+      "id": "faq_heading",
+      "label": "FAQ Heading",
+      "default": "Heading",
+      "placeholder": "Heading",
+      "info": "Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Accordion ",
+      "type": "accordion_",
+      "settings": [
+        {
+          "type": "text",
+          "id": "accordion_title",
+          "label": "Accordion Title",
+          "default": "Accordion Title",
+          "placeholder": "Accordion Title"
+        },
+         
+        {
+          "type": "textarea",
+          "id": "accordion_content",
+          "label": "Accordion content",
+          "default": "Accordion data",
+          "placeholder": "Accordion data",
+          "info": "Accordion data"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Accordion"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+

@@ -1,0 +1,144 @@
+      <section
+        class="hero_banner_about bg_style"
+        style="background-image: url('{{ section.settings.banner | img_url: 'master' }}')"
+      >
+        <div class="container">
+          <div class="hero_txt_about">
+            <div class="hero_txt_under">
+              <h1>{{ section.settings.title }}</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <section class="our_blog learn_blog py_9">
+        <div class="container">
+
+          <div class="row">
+          {%- paginate blogs.blog.articles by 9 -%}
+         
+
+           {% for article in blogs.blog.articles  %}
+            <div class="col-md-4 mb-4">
+              <div class="our_blog_sec">
+                <div class="img_sec">
+                   <a href="{{ article.url }}">
+                  <img src="{{ article | img_url: 'original' }}" alt="img">
+                   </a>
+                </div>
+                <div class="our_blog_txt">
+                  <span> {{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+                  <h3>{{ article.title }}</h3>
+                  <div class="truncate">
+                    {{ article.content }}
+                  </div>
+                  <div class="arrowq">
+                    <a href="{{ article.url  }}" class="read_more">Read More</a>
+                    <img src="https://cdn.shopify.com/s/files/1/0625/8370/1674/files/arrow_3607daf7-6fde-421e-b54c-6df3f136c91d.png?v=1695815192" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            {%- endfor -%}     
+  {%- if paginate.pages > 1 -%}
+    <nav role="navigation">
+      <ol class="pagination">
+        {%- if paginate.previous-%}
+          <li>
+            <a href="{{ paginate.previous.url }}">
+              <span aria-hidden="true">&laquo;</span>
+              Previous <span class="visuallyhidden">page</span>
+            </a>
+          </li>
+        {%- else -%}
+          <li class="disabled">
+            <span aria-hidden="true">&laquo;</span>
+            Previous <span class="visuallyhidden">page</span>
+          </li>
+        {%- endif -%}
+
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <li>
+              <a href="{{ part.url }}">
+                <span class="visuallyhidden">page</span> {{ part.title }}
+              </a>
+            </li>
+          {%- else -%}
+            {%- if part.title == paginate.current_page -%}
+              <li class="active" aria-current="page">
+                <span class="visuallyhidden">page</span> {{ part.title }}
+              </li>
+            {%- else -%}
+              <li>
+                <span class="visuallyhidden">page</span> {{ part.title }}
+              </li>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if paginate.next -%}
+          <li>
+            <a href="{{ paginate.next.url }}">
+              Next <span class="visuallyhidden">page</span>
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        {%- else -%}
+          <li class="disabled">
+            Next <span class="visuallyhidden">page</span>
+            <span aria-hidden="true">&raquo;</span>
+          </li>
+        {%- endif -%}
+      </ol>
+    </nav>
+  {%- endif -%}
+{%- endpaginate -%}
+          
+          </div>
+        </div>
+      </section>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var truncateElements = document.querySelectorAll('.truncate');
+
+    truncateElements.forEach(function(element) {
+        var content = element.innerHTML;
+        var words = content.split(' ');
+
+        if (words.length > 40) {
+            var truncatedContent = words.slice(0, 40).join(' ') + '...';
+            element.innerHTML = truncatedContent;
+        }
+    });
+});
+</script>
+
+
+  
+
+      {% schema %}
+  {
+    "name": "Learn",
+    "settings": [
+            {
+        "type": "image_picker",
+        "id": "banner",
+        "label":"Add Image"
+      },
+     {
+        "type": "text",
+        "id": "title",
+        "label":"Heading"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

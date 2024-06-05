@@ -1,0 +1,85 @@
+<section class="product-list">
+  <div class="bundler-product-card p-tb">
+    <h2 class="bndlr-bundle-title1">{{ section.settings.bundle_heading }}</h2>
+    {% if section.settings.bundle-box %}
+      <div class="bundle-set-1">
+        <div class="bndlr-bundle-description1">{{ section.settings.bundle_subheading }}</div>    
+        {{ section.settings.bundle-box }}
+      </div>
+    {% endif %}
+    
+    {% if section.settings.bundle-box2 %}
+      <div class="bundle-set-2"> 
+        <div class="bndlr-bundle-description1">{{ section.settings.bundle_subheading2 }}</div>   
+        {{ section.settings.bundle-box2 }}
+      </div> 
+    {% endif %}
+    
+    
+    {% if section.settings.bundle-box3 %}
+      <div class="bundle-set-3"> 
+        <div class="bndlr-bundle-description1">{{ section.settings.bundle_subheading3 }}</div>    
+        {{ section.settings.bundle-box3 }}
+      </div>  
+    {% endif %}
+  
+</div>
+</section>
+{% schema %}
+  {
+  "name": "Bundle Product",
+  "settings": [
+    {
+      "type": "text",
+      "id": "bundle_heading",
+      "label": "Bundle heading",
+      "default": "Bundle heading",
+      "placeholder": "LumiRed "
+    },
+    {
+      "type": "text",
+      "id": "bundle_subheading",
+      "label": "Bundle SubHeading",
+      "default": " SubHeading"
+    },
+    {
+      "type": "html",
+      "id": "bundle-box",
+      "label": "Bundle Box"
+    },
+     {
+      "type": "text",
+      "id": "bundle_subheading2",
+      "label": "Bundle SubHeading 2",
+      "default": " SubHeading"
+    },
+    {
+      "type": "html",
+      "id": "bundle-box2",
+      "label": "Bundle Box 2"
+    },
+     {
+      "type": "text",
+      "id": "bundle_subheading3",
+      "label": "Bundle SubHeading 3",
+      "default": " SubHeading"
+    },
+    {
+      "type": "html",
+      "id": "bundle-box3",
+      "label": "Bundle Box 3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bundle Product"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

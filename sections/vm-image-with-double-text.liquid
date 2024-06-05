@@ -1,0 +1,211 @@
+{% assign image = section.settings.image %}
+{% assign first_title = section.settings.first_title %}
+{% assign first_text= section.settings.first_text %}
+{% assign second_title = section.settings.second_title %}
+{% assign second_text= section.settings.second_text %}
+
+<section class="image-with-double-text image-with-double-text--{{ section.id }}">
+    <div class="image-with-double-text__image-wrapper">
+        {%- if image != blank -%}
+        {% assign alt = image.alt | default: heading %}
+        {% assign crop = crop | default: 'center' %}
+        {% capture image_classes %}{{ base_name }}__image{% endcapture %}
+        {%
+          render 'rimg'
+          img: image,
+          alt: alt,
+          size: '1500x',
+          lazy: true,
+          crop: crop,
+          class: image_classes,
+        %}
+      {%- else -%}
+        {% capture placeholder_classes %}{{ base_name }}__image {{ base_name }}__placeholder{% endcapture %}
+        {{ 'collection-1' | placeholder_svg_tag: placeholder_classes }}
+      {%- endif -%}
+
+        <div class="image-with-double-text__content">
+            <div class="image-with-double-text__first-content">
+                {%- if first_title != blank -%}
+                    <h2 class="image-with-double-text__first-title">{{ first_title | escape }}</h2>
+                {%- endif -%}
+
+                {%- if first_text -%}
+                    <div class="image-with-double-text__first-text">{{ first_text }}</div>
+                {%- endif -%}
+            </div>
+
+            <div class="image-with-double-text__second-content">
+                {%- if second_title != blank -%}
+                    <h2 class="image-with-double-text__second-title">{{ second_title | escape }}</h2>
+                {%- endif -%}
+
+                {%- if second_text -%}
+                    <div class="image-with-double-text__second-text">{{ second_text }}</div>
+                {%- endif -%}
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Image with double text",
+        "settings": [
+            {
+                "type": "range",
+                "id": "padding_top",
+                "min": 0,
+                "max": 100,
+                "step": 10,
+                "unit": "px",
+                "label": "Section spacing top",
+                "default": 20
+            },
+            {
+                "type": "range",
+                "id": "padding_bottom",
+                "min": 0,
+                "max": 100,
+                "step": 10,
+                "unit": "px",
+                "label": "Section spacing bottom",
+                "default": 20
+            },
+            {
+                "type": "color",
+                "id": "section_background",
+                "label": "Section background",
+                "default": "#050505"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+                "type": "range",
+                "id": "image_width",
+                "min": 0,
+                "max": 900,
+                "step": 10,
+                "unit": "px",
+                "label": "Image width",
+                "default": 550
+            },
+            {
+                "id": "left_content",
+                "type": "range",
+                "label": "Content container left spacing",
+                "min": 1,
+                "max": 100,
+                "step": 1,
+                "unit": "%",
+                "default": 60
+            },
+            {
+                "type": "text",
+                "id": "first_title",
+                "label": "First title",
+                "default": "A non-invasive alternative that might work for you."
+              },
+              {
+                "type": "color",
+                "id": "first_title_color",
+                "label": "First title color",
+                "default": "#f43131"
+              },
+              {
+                "type": "richtext",
+                "id": "first_text",
+                "label": "First text",
+                "default": "<p>Red Light Therapy is a completely painless treatment that has no side effects and is extremely accessible to many due to the fact it can be administered at a very low cost.</p>"
+              },
+              {
+                "type": "color",
+                "id": "first_text_color",
+                "label": "First text color",
+                "default": "#FFFFFF"
+              },
+              {
+                "type": "text",
+                "id": "second_title",
+                "label": "Second title",
+                "default": "The science behind Red Light Therapy."
+              },
+              {
+                "id": "second_content",
+                "type": "range",
+                "label": "Second content left spacing",
+                "min": 1,
+                "max": 100,
+                "step": 1,
+                "unit": "%",
+                "default": 20
+                },
+              {
+                "type": "color",
+                "id": "second_title_color",
+                "label": "Second title color",
+                "default": "#f43131"
+              },
+              {
+                "type": "richtext",
+                "id": "second_text",
+                "label": "Second text",
+                "default": "<p>Red Light Therapy is a completely painless treatment that has no side effects and is extremely accessible to many due to the fact it can be administered at a very low cost.</p>"
+              },
+              {
+                "type": "color",
+                "id": "second_text_color",
+                "label": "Second text color",
+                "default": "#FFFFFF"
+              }
+        ],
+        "presets": [
+            {
+                "category": "Image with text",
+                "name": "Image with double text"
+            }
+        ]
+    }
+{% endschema %}
+
+{% style %}
+  .image-with-double-text--{{ section.id }} {
+    margin-top: {{ section.settings.padding_top }}px;
+    margin-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.section_background }};
+  }
+
+  .image-with-double-text--{{ section.id }} .image-with-double-text__image-wrapper img {
+    width: {{ section.settings.image_width}}px;
+  }
+
+
+  .image-with-double-text--{{ section.id }} .image-with-double-text__content {
+    left: {{ section.settings.left_content }}%;
+  }
+
+  .image-with-double-text--{{ section.id }} .image-with-double-text__first-title {
+    color: {{ section.settings.first_title_color }};
+  }
+
+  .image-with-double-text--{{ section.id }} .image-with-double-text__first-text {
+    color: {{ section.settings.first_text_color }};
+  }
+
+  .image-with-double-text--{{ section.id }} .image-with-double-text__second-content {
+    padding-left: {{ section.settings.second_content }}%;
+  }
+
+  .image-with-double-text--{{ section.id }} .image-with-double-text__second-title {
+    color: {{ section.settings.second_title_color}};
+  }
+
+  .image-with-double-text--{{ section.id }} .image-with-double-text__second-text {
+    color: {{ section.settings.second_text_color }};
+  }
+
+{% endstyle %}

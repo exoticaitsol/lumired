@@ -1,0 +1,12 @@
+.vm-bundler-target-element {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 100px;
+
+    @include small-screen {
+        flex-direction: column;
+        gap: 0;
+    }
+}

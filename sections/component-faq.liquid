@@ -1,0 +1,101 @@
+<faq-container>
+    <div class="faq-container faq-container--{{ section.id }}">
+        {%- if section.settings.title != blank -%}
+          <h2>{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+      
+        {%- if section.blocks.size > 0 -%}
+      
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {% for block in section.blocks %}
+                  {
+                      "@type": "Question",
+                      "name": {{ block.settings.title | json }},
+                      "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": {{ block.settings.text | json }}
+                      }
+                  }{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+              ]
+            }
+          </script>
+      
+          {%- for block in section.blocks -%}
+            <div class="faq__question">
+              <h4 class="faq-question__title">{{ block.settings.title }} <span class="faq-question__dropdown">{% render 'icon-chevron-down' %}</span></h4>
+              <div class="faq-question__answer">
+                  {{ block.settings.text }}
+              </div>
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+    </div>
+</faq-container>
+
+{% style %}
+    .faq-container--{{ section.id }} {
+        padding-block: {{ section.settings.padding_block }}px;
+    }
+{% endstyle %}
+    
+    
+{% schema %}
+      {
+        "name": "FAQ",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Heading",
+                "default": "FAQs"
+            },
+            {
+                "type": "range",
+                "id": "padding_block",
+                "min": 0,
+                "max": 100,
+                "step": 10,
+                "unit": "px",
+                "label": "Section spacing top/bottom",
+                "default": 0
+            }
+        ],
+        "blocks": [
+          {
+            "type": "question",
+            "name": "Question",
+            "settings": [
+              {
+                "type": "text",
+                "id": "title",
+                "label": "Question",
+                "default": "Frequently asked question"
+              },
+              {
+                "type": "richtext",
+                "id": "text",
+                "label": "Text",
+                "default": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+              }
+            ]
+          }
+        ],
+        "presets": [{
+          "name": "FAQ",
+          "blocks": [
+            {
+              "type": "question"
+            },
+            {
+              "type": "question"
+            }
+          ]
+        }]
+    }
+{% endschema %}
+    

@@ -1,0 +1,23 @@
+.live-search-form {
+	max-width: 1000px;
+
+	.form-field {
+		border: 2px solid $border;
+		border-radius: 50px;
+	}
+
+	.form-field-input {
+		background: none;
+		color: white;
+	}
+
+	.live-search-button {
+		border-radius: 50px !important;
+		display: flex;
+		align-items: center;
+	}
+
+  @include mobile-screen {
+   padding: 20px;
+  }
+}

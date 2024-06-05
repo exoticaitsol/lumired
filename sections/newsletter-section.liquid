@@ -1,0 +1,109 @@
+<section class="sub_scrcicbe_sec py_9">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <div class="sub_scrcicbe_head">
+          <h2>{{ section.settings.main }}</h2>
+          {{ section.settings.description }}
+        </div>
+        <div class="sub_scrcicbe_form">
+          {% form 'customer', id: form_id %}
+            {% if form.posted_successfully? %}
+              <p class="newsletter-success">
+                {{ 'general.newsletter.success' | t }}
+              </p>
+            {% else %}
+              <input
+                type="hidden"
+                name="contact[tags]"
+                value="{{ newsletter_tags }}"
+              >
+
+              <div class="form-fields-inline pxs-newsletter-form-fields">
+                <div class="row">
+                  <div class="col-md-12 form-field newsletter-input">
+                    <input
+                      class="form-field-input form-field-text"
+                      name="contact[email]"
+                      id="{{ input_id }}"
+                      type="email"
+                      aria-label="{{ 'general.newsletter.placeholder' | t }}"
+                    >
+
+                    <label
+                      class="form-field-title"
+                      for="{{ input_id }}"
+                    >
+                      {{ 'general.newsletter.placeholder' | t }}
+                    </label>
+                  </div>
+
+                  <div class="col-md-12 form-field newsletter-submit">
+                    <button
+                      class="button-primary"
+                      name="subscribe"
+                      type="submit"
+                    >
+                      Subscribe Now
+                      <!-- {{ 'general.newsletter.subscribe' | t }} -->
+                    </button>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endform %}
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="sub_scrcicbe_img">
+          <img
+            class="lazyload"
+            src="{{ section.settings.image| img_url: 'original' }}"
+            alt="{{ section.settings.image }}"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+            loading="lazyimage"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+ {
+   "name": "Newsletter Section",
+   "settings": [
+{
+       "type": "text",
+       "id": "main",
+       "label":"Heading"
+     },
+
+
+     {
+       "type": "richtext",
+       "id": "description",
+       "label":"Description"
+     },
+     {
+       "type": "image_picker",
+       "id": "image",
+       "label":" Image"
+     }
+
+
+   ],
+
+    "presets": [
+      {
+      "name": "Newsletter Section"
+      }
+    ]
+ }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

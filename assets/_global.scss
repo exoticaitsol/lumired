@@ -1,0 +1,277 @@
+.vm-button-container {
+	.vm-button {
+		border: 1px solid $red;
+		box-shadow: 0px 0px 0px 1px red inset;
+		text-decoration: none;
+		cursor: pointer;
+		border-radius: 50px;
+		font-weight: 900;
+		display: flex;
+		align-items: center;
+		transition: 0.3s ease all;
+		width: 225px;
+		padding: 0 0 0 15px;
+		gap: 10px;
+		justify-content: space-between;
+		appearance: none;
+		max-height: 51px;
+
+		&--black {
+			color: $white;
+			background: $black;
+
+			&:hover {
+				background: $white;
+				color: $black;
+			}
+		}
+
+		&--white {
+			background: $white;
+			color: $black;
+
+			&:hover {
+				color: $white;
+				background: $black;
+			}
+		}
+
+		.vm-button_inner-text {
+			margin: 0;
+			font-size: 18px !important;
+			font-weight: 900 !important;
+			text-transform: uppercase;
+			width: 100%;
+			flex: 100%;
+			text-align: center;
+
+			&--product {
+				font-size: 14px !important;
+			}
+		}
+
+		.vm-button_inner-arrow {
+			box-sizing: content-box !important;
+			background-color: $red;
+			border: 2px solid $red;
+			border-radius: 50%;
+			display: flex;
+			height: 45px;
+			width: 45px;
+			min-width: 45px;
+			min-height: 45px;
+			max-width: 45px;
+			max-height: 45px;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+}
+
+.productitem .vm-button-container .vm-button {
+	width: 180px;
+
+	@include mobile-screen {
+		width: 100%;
+		padding: 10px;
+
+		.vm-button_inner-arrow {
+			display: none;
+		}
+	}
+}
+
+.vm-flex {
+	display: flex;
+
+	&--space-bw-align-center {
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&--column {
+		flex-direction: column;
+	}
+}
+
+.vm-icon-wrapper {
+	width: 50px !important;
+	height: 50px !important;
+	border-radius: 50%;
+	background-color: $red;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	@include mobile-screen {
+		fill: $red;
+		width: 20px !important;
+		height: 20px !important;
+		background: none;
+	}
+}
+
+.productitem,
+.article--excerpt-wrapper,
+.testimonial {
+	border: $borderWidth solid $red !important;
+}
+
+.product-recommendations--container .vm-flex {
+	flex-direction: column;
+	gap: 5px;
+}
+
+.vm-link {
+	color: $red;
+	text-decoration: none;
+	text-transform: capitalize;
+}
+
+.featured-collection__container .vm-flex--space-bw-align-center-mobile {
+	flex-direction: column !important;
+
+	.vm-button-container {
+		padding-top: 5px !important;
+	}
+}
+
+.breadcrumbs-container {
+	white-space: nowrap;
+	overflow: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.product-additional-info {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.product-fda {
+	display: flex;
+	flex-direction: column;
+
+	.product-fda__img {
+		display: flex;
+		width: 100px;
+		height: 100px;
+		align-items: center;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: scale-down;
+		}
+	}
+
+	p {
+		margin: 0;
+	}
+}
+
+.product-user-manual  {
+	display: flex;
+    align-items: center;
+
+	.product-user-manual__pdf-link {
+
+		color: black;
+		text-transform: capitalize;
+		text-decoration: none;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	
+		.product-user-manual__img {
+			display: flex;
+			width: 100px;
+			height: 100px;
+			align-items: center;
+	
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: scale-down;
+			}
+
+			p {
+				margin-bottom: 0;
+			}
+		}
+	
+		.product-user-manual__name {
+			color: rgb(28, 145, 255);
+		}
+	}
+}
+
+
+@include general-screen {
+	.vm-flex--space-bw-align-center-mobile {
+		flex-direction: column !important;
+		gap: 5px;
+	}
+
+	.productgrid-gridview .productitem--title {
+		text-align: center;
+	}
+
+	.productgrid-gridview .rating {
+		justify-content: center;
+	}
+
+	.productgrid-gridview .productitem__stock-level {
+		justify-content: center;
+	}
+}
+
+.article--excerpt-content .vm-button--white {
+	border: 2px solid $white;
+	.vm-button_inner-text {
+		color: $red;
+	}
+}
+
+.site-footer-item__disclaimer {
+	padding-top: 30px;
+	padding-bottom: 10px;
+	color: gray;
+	font-size: 14px;
+}
+
+@include mobile-screen {
+	.productitem .vm-button-container .vm-button {
+		width: 120px;
+
+		.vm-button_inner-text {
+			font-size: 10px !important;
+		}
+
+		.vm-button_inner-arrow {
+			height: 30px;
+			width: 30px;
+		}
+	}
+
+	.site-header-main {
+		padding-block: 0 !important;
+	}
+
+	.image-with-text--section {
+		margin-top: 0 !important;
+	}
+}
+
+@media screen and (min-width: 720px) {
+	.template-collection .productgrid--items .productgrid--item {
+		width: 33.33% !important;
+		margin-left: -2px !important;
+		margin-top: -2px !important;
+	}
+}

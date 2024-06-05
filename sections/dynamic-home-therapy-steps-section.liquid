@@ -1,0 +1,79 @@
+<section class="therapy-steps">
+            <div class="therapy-steps-container">
+                <div class="therapy-steps-row">
+                    <h2>{{ section.settings.banner-heading }}</h2>
+                    <div class="steps-box-wrap">
+                       {%- for block in section.blocks -%}
+                        {%- case block.type -%}
+
+                          {%- when 'therapy_blocks' -%}
+                        <div class="steps-box">
+                            {%- assign therapy_icons = block.settings.therapy_icons -%}
+                              {{ therapy_icons | image_url: width: therapy_icons.width | image_tag: class: 'add_your_class_here', loading: 'lazy' }}
+                            <p>{{ block.settings.therapy_head }}</p>
+                        </div>
+                       {%- endcase -%}
+                          {%- endfor -%}
+                       
+                    </div>
+                    <a href="{{ section.settings.link }}" class="vm-button-red">{{ section.settings.linktext }}</a>
+                </div>
+            </div>
+        </section>
+        {% schema %}
+  {
+    "name": "Therapy steps",
+    "settings": [
+    {
+      "type": "text",
+      "id": "banner-heading",
+      "label": "Banner Heading",
+      "default": "Banner Heading",
+      "placeholder": "Banner Heading",
+      "info": "Banner Heading"
+    },
+      {
+      "id": "link",
+      "type": "url",
+      "label": "Button link"
+    },
+    {
+      "id": "linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Click Here"
+    }
+    
+  ],
+    "blocks": [
+    {
+      "name": "Therapy Blocks",
+      "type": "therapy_blocks",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "therapy_icons",
+          "label": "Therapy icons",
+          "info": "therapy icons"
+        },
+        {
+          "type": "text",
+          "id": "therapy_head",
+          "label": "therapy Head"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Therapy steps"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

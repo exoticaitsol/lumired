@@ -1,0 +1,54 @@
+      <section
+        class="non_invasive_sec bg_style py_9"
+        style="background-image: url('{{ section.settings.background_img | img_url: "master" }}')">
+        <div class="container">
+          <div class="non_invasive_txt">
+               {%  for block in section.blocks %}
+                {% if block.type == 'add_content' %}
+                 <div class="under_vansive">
+              <h2>{{ block.settings.title }}</h2>
+            {{ block.settings.desc }}
+            </div>
+                  {% endif %}
+            {% endfor %}
+        
+          </div>
+        </div>
+      </section>
+
+{% schema %}
+  {
+    "name": "Non Invasive Text",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "background_img",
+        "label": "Add Background Image"
+      }
+    ],
+     "blocks": [
+       {
+       "name": "Add Content",
+       "type": "add_content",
+        "settings": [
+       {
+        "type": "text",
+        "id": "title",
+        "label": "Add Title"
+       },
+       {
+        "type": "richtext",
+        "id": "desc",
+        "label": "Add Description"
+       }
+      ]
+    }
+   ]   
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

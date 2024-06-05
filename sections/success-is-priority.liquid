@@ -1,0 +1,68 @@
+      <section class="unveiling_sec">
+        <div class="row g-0">
+          <div class="col-md-7">
+            <div class="unveil_sec">
+              <div class="unevil_txt_sec">
+                <h2>{{ section.settings.title }}</h2>
+               {{ section.settings.desc }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="unevil_img">
+              <img src="{{ section.settings.image | img_url: 'master' }}" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="based_company_sec py_9">
+        <div class="container">
+          <div class="row">
+            <div class="based_sec">
+              <div class="under_based_txt">
+                <h2>{{ section.settings.irish_based_title }}</h2>
+                {{ section.settings.irish_based_desc }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+{% schema %}
+  {
+    "name": "Success is priority",
+    "settings": [
+            {
+        "type": "image_picker",
+        "id": "image",
+        "label":"Add Image"
+      },
+     {
+        "type": "text",
+        "id": "title",
+        "label":"Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "desc",
+        "label":"description"
+      },
+     {
+        "type": "text",
+        "id": "irish_based_title",
+        "label":"Irish Based Title "
+      },
+      {
+        "type": "richtext",
+        "id": "irish_based_desc",
+        "label":"Irish Based Title"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

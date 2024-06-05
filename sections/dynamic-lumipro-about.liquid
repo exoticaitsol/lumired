@@ -1,0 +1,97 @@
+{%- if section.settings.background-img != blank -%}
+        {%- assign img_url = section.settings.background-img | img_url: '  ' -%}       
+        
+        <style>
+          .secondary-product-img{
+            background: url('{{ img_url }}');
+            background-repeat: no-repeat;
+    background-size: cover;
+            background-position: 50% 50%;
+          }
+        </style>
+  <section class="why-lumipro-sec secondary-product-img">
+    {%- assign background-img = section.settings.background-img -%}
+  
+   
+  <div class="p-tb image-with-text">
+    <div class="sec-productcontent-heading">
+      <h2>{{ section.settings.about_heading }} </h2>
+      {%- for block in section.blocks -%}
+  {%- case block.type -%}
+
+    {%- when 'about_blocks' -%}
+      <div class="product-content-box">
+          <div class="c-icon">
+           {%- assign block_icon = block.settings.block_icon -%}
+      {{ block_icon | image_url: width: block_icon.width | image_tag: class: 'add_your_class_here', loading: 'lazy' }}
+        </div>
+        <div class="content-box">
+          <h4>{{ block.settings.block_head }} </h4>
+          <p>{{ block.settings.block_detail }} </p>
+        </div>
+        </div>
+        {%- endcase -%}
+      {%- endfor -%}
+  
+    </div>
+  </div>
+    </section>
+    {%- endif -%}
+{% schema %}
+  {
+  "name": "About why lumipro",
+  "settings": [
+    {
+      "type": "text",
+      "id": "about_heading",
+      "label": "About Heading",
+      "default": "About Heading",
+      "placeholder": "About Heading",
+      "info": "About Heading"
+    },
+    {
+          "type": "image_picker",
+          "id": "background-img",
+          "label": "Background Img",
+          "info": "Background Image"
+        }
+  ],
+  "blocks": [
+    {
+      "name": "About blocks",
+      "type": "about_blocks",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "block_icon",
+          "label": "Block icon",
+          "info": "Block icon"
+        },
+        {
+          "type": "text",
+          "id": "block_head",
+          "label": "Block Head"
+        },
+        {
+          "type": "richtext",
+          "id": "block_detail",
+          "label": "Block Detail",
+          "info": "Block Detail"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About why lumipro"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+  
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

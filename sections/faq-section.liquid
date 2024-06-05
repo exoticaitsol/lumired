@@ -1,0 +1,128 @@
+<section class="frequently_ask_ques py_9">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-7">
+        <div class="frequently_txt">
+          <h2>{{ section.settings.faq_title }}</h2>
+
+          {{ section.settings.description }}
+
+          <div class="accordian_sec">
+            <div
+              class="accordion accordion-flush{{ forloop.index }}"
+              id="accordionFlushExample"
+            >
+              {% for block in section.blocks %}
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingTwo{{ forloop.index }}">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseTwo{{ forloop.index }}"
+                      aria-expanded="false"
+                      aria-controls="flush-collapseTwo{{ forloop.index }}"
+                    >
+                      {{ block.settings.question }}
+                    </button>
+                  </h2>
+                  <div
+                    id="flush-collapseTwo{{ forloop.index }}"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="flush-headingTwo{{ forloop.index }}"
+                    data-bs-parent="#accordionFlushExample"
+                    style=""
+                  >
+                    <div class="accordion-body">
+                      {{ block.settings.answer }}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            <div class="about_us_btn">
+              <a href="{{ section.settings.btn_url }}" class="theme_btn">{{ section.settings.btn_text }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="fre_img">
+          <img
+            class="lazyload"
+            src="{{ section.settings.image| img_url: 'original' }}"
+            alt="{{ section.settings.image }}"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+            loading="lazyimage"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Faq Section",
+  "settings": [
+     {
+      "type": "text",
+      "id": "faq_title",
+      "label":"Faq Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label":"description"
+    },
+      {
+      "type": "image_picker",
+      "id": "image",
+      "label":"Image"
+    }   ,
+     {
+      "type": "text",
+      "id": "btn_text",
+      "label":"button Text"
+    },
+     {
+      "type": "url",
+      "id": "btn_url",
+      "label":"button url"
+    }
+  ],
+    "blocks": [
+  {
+    "type": "faq_item",
+    "name": "FAQ Item",
+    "settings": [
+      {
+        "type": "text",
+        "id": "question",
+        "label": "Question"
+
+      },
+      {
+        "type": "textarea",
+        "id": "answer",
+        "label": "Answer"
+
+      }
+    ]
+  }
+],
+
+   "presets": [
+     {
+     "name": "Faq Section"
+     }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

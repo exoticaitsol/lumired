@@ -1,0 +1,71 @@
+.vm-hero-banner {
+    padding-top: 154px;
+    position: relative;
+    display: flex;
+    align-content: center;
+    align-items: center;
+
+    .vm-hero-banner__image {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .vm-hero-banner__content {
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+
+        .vm-hero-banner__header {
+            font-size: 100px;
+            font-weight: 900;
+            margin: 0;
+
+            @include mobile-screen {
+                font-size: 70px;
+            }
+        }
+
+        .vm-hero-banner__subheader {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 400;
+            text-transform: capitalize;
+
+            @include mobile-screen {
+                font-size: 18px;
+            }
+        }
+
+        .vm-button {
+            margin-top: 40px;
+        }
+    }
+
+    @include mobile-screen {
+        padding-top: 66px;
+
+        .vm-hero-banner__content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .vm-hero-banner__header,
+            .vm-hero-banner__subheader {
+                text-align: center;
+            }
+        }
+    }
+}

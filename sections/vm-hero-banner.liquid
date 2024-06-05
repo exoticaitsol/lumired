@@ -1,0 +1,194 @@
+{% assign image = section.settings.image %}
+{% assign header = section.settings.header %}
+{% assign subheader = section.settings.subheader %}
+{% assign isButtonDisplayed = section.settings.enable_button %}
+{% assign buttonColor = section.settings.button_color %}
+{% assign buttonInnerText = section.settings.button_label %}
+{% assign buttonUrl = section.settings.button_link %}
+
+
+<div class="vm-hero-banner vm-hero-banner--{{ section.id }}">
+
+    <div class="vm-hero-banner__image">
+        {%- if image != blank -%}
+            {%
+                render 'rimg'
+                img: image,
+                alt: alt,
+                size: '1500x',
+                crop: crop,
+                class: image_classes,
+            %}
+        {%- endif -%}
+    </div>  
+  
+    <div class="vm-hero-banner__content site-footer-item main-hero-banner">
+        <div class="vm-hero-banner__content-wrapper">
+            {%- if header != blank -%}
+                <h1 class="vm-hero-banner__header pxu-lia-element" >{{ header }}</h1>
+            {%- endif -%}
+
+            {%- if subheader != blank -%}
+                <h2 class="vm-hero-banner__subheader pxu-lia-element">{{ subheader }}</h2>
+            {%- endif -%}
+
+            {% if isButtonDisplayed %}
+                {% render 'vm-button', button_color: buttonColor, button_label: buttonInnerText, button_link: buttonUrl %}
+            {% endif %}
+        </div>
+        
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Hero Banner",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+                "type": "range",
+                "id": "section_height",
+                "min": 0,
+                "max": 900,
+                "step": 10,
+                "unit": "px",
+                "label": "Section height",
+                "default": 550
+            },
+            {
+                "id": "content_position",
+                "type": "select",
+                "label": "Content position",
+                "options": [
+                  {
+                    "value": "flex-start",
+                    "label": "Left"
+                  },
+                  {
+                    "value": "center",
+                    "label": "Center"
+                  },
+                  {
+                    "value": "flex-end",
+                    "label": "Right"
+                  }
+                ],
+                "default": "center"
+            },
+            {
+                "id": "text_align",
+                "type": "select",
+                "label": "Text align",
+                "options": [
+                  {
+                    "value": "left",
+                    "label": "Left"
+                  },
+                  {
+                    "value": "center",
+                    "label": "Center"
+                  },
+                  {
+                    "value": "right",
+                    "label": "Right"
+                  }
+                ],
+                "default": "left"
+            },
+            {
+                "type": "text",
+                "id": "header",
+                "label": "Header",
+                "default": "Header text here"
+              },
+              {
+                "type": "color",
+                "id": "header_color",
+                "label": "Header color",
+                "default": "#f43131"
+              },
+              {
+                "type": "text",
+                "id": "subheader",
+                "label": "Subheader"
+              },
+              {
+                "type": "color",
+                "id": "subheader_color",
+                "label": "Subheader color",
+                "default": "#FFFFFF"
+              },
+              {
+                "type": "checkbox",
+                "id": "enable_button",
+                "label": "Enable button",
+                "default": false
+              },
+              {
+                "id": "button_color",
+                "type": "select",
+                "label": "Button color",
+                "options": [
+                  {
+                    "value": "white",
+                    "label": "White"
+                  },
+                  {
+                    "value": "black",
+                    "label": "Black"
+                  },
+                  {
+                    "value": "red",
+                    "label": "Red"
+                  }
+                ],
+                "default": "black"
+              },
+              {
+                "id": "button_label",
+                "type": "text",
+                "label": "Button inner text",
+                "default": "Button"
+              },
+              {
+                "id": "button_link",
+                "type": "url",
+                "label": "Button URL"
+              }
+        ],
+        "presets": [
+            {
+                "category": "Hero Banner",
+                "name": "Hero Banner"
+            }
+        ]
+    }
+{% endschema %}
+
+{% style %}
+.vm-hero-banner--{{ section.id }} {
+    height: {{ section.settings.section_height}}px;
+    justify-content: {{ section.settings.content_position}};
+}
+
+.vm-hero-banner--{{ section.id }} .vm-hero-banner__content {
+    align-items: {{ section.settings.content_position}};
+}
+
+.vm-hero-banner--{{ section.id }} .vm-hero-banner__content-wrapper {
+    text-align: {{ section.settings.text_align}};
+}
+
+.vm-hero-banner--{{ section.id }} .vm-hero-banner__header {
+    color: {{ section.settings.header_color }};
+}
+
+.vm-hero-banner--{{ section.id }} .vm-hero-banner__subheader {
+    color: {{ section.settings.subheader_color }};
+}
+
+{% endstyle %}

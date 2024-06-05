@@ -1,0 +1,47 @@
+      <section class="significant_reducing py_9">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+              <div class="significant_sec">
+                <div class="significant_txt">
+                  <h2>{{ section.settings.title }}</h2>
+                 {{ section.settings.description }}
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+              <div class="signi_img">
+                <img src="{{ section.settings.img | img_url: 'master' }}" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+{% schema %}
+  {
+    "name": "Significant help",
+    "settings": [
+        {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Add Image"
+      },
+        {
+        "type": "text",
+        "id": "title",
+        "label": "Add title"
+      },
+              {
+        "type": "richtext",
+        "id": "description",
+        "label": "Add description"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

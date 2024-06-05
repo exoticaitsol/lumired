@@ -1,0 +1,87 @@
+<section class="benefit_red_light red_light py_9">
+  <div class="container">
+    <div class="heading_title">
+      <h2>{{ section.settings.title }}</h2>
+      {{ section.settings.description }}
+    </div>
+    <div class="row">
+      {% for block in section.blocks %}
+        <div class="col-md-3 mt-4">
+          <div class="therpy_sec_red">
+            <div class="therpy_under_sec">
+              <a href="{{ block.settings.url }}">
+                <div class="img_red_therpy">
+                  <img
+                    class="lazyload"
+                    src="{{ block.settings.list_img| img_url: 'master' }}"
+                    alt="{{ block.settings.list_img.height }}"
+                    width="276"
+                    height="276"
+                    loading="lazy"
+                  >
+                  <p>{{ block.settings.title }}</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Benefit  light Section ",
+  "settings": [
+
+    {
+      "type": "text",
+      "id": "title",
+      "label":"Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label":"Description"
+    }
+  ],
+  "blocks": [
+  {
+    "type": "Therpy_Sec_list",
+    "name": "Therpy_Sec_list",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+
+      },
+      {
+      "type": "image_picker",
+      "id": "list_img",
+      "label":"List Image"
+     },
+       {
+      "type": "url",
+      "id": "url",
+      "label":"URL"
+     }
+
+    ]
+  }
+],
+
+   "presets": [
+     {
+     "name": "Benefit light Section"
+     }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

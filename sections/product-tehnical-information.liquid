@@ -1,0 +1,212 @@
+
+{%- if section.settings.first_content != blank
+    or section.settings.second_content != blank
+    or section.settings.third_content != blank
+
+    or section.settings.specifications != blank
+    or section.settings.spectrum != blank
+    or section.settings.warranty != blank
+ -%}    
+    <section class="product-tehnical-info product-tehnical-info--{{section.id}} product-section--container">
+        <div class="product-tehnical-info__wrapper vm-flex">
+            
+            <div class="product-tehnical-info__first-container vm-flex vm-flex--column">
+
+                <div class="product-tehnical-info__how vm-flex vm-flex--column">
+                    {%- if section.settings.first_title != blank -%}
+                        <h2 class="product-tehnical-info__title">{{section.settings.first_title}}</h2>
+                    {%- endif -%}
+
+                    {%- if section.settings.first_content != blank -%}
+                        <div >{{section.settings.first_content}}</div>
+                    {%- endif -%}
+                
+            
+                </div>
+
+                <div class="product-tehnical-info__benefits vm-flex vm-flex--column">
+                    {%- if section.settings.second_title != blank -%}
+                        <h2 class="product-tehnical-info__title">{{section.settings.second_title}}</h2>
+                    {%- endif -%}
+
+
+                    {%- if section.settings.second_content != blank -%}
+                        <div >{{section.settings.second_content}}</div>
+                    {%- endif -%}
+                </div>
+
+                <div class="product-additional-info">
+                    {% render 'fda-badge', image: section.settings.image %}    
+                    {% render 'user-manual' %}
+                </div>
+            </div>
+
+            <div class="product-tehnical-info__second-container vm-flex vm-flex--column">
+                <div class="product-tehnical-info__details vm-flex vm-flex--column">
+                    {%- if section.settings.third_title != blank -%}
+                        <h2 class="product-tehnical-info__title">{{section.settings.third_title}}</h2>
+                    {%- endif -%}
+
+                    {%- if section.settings.third_content != blank -%}
+                        <div >{{section.settings.third_content}}</div>
+                    {%- endif -%}
+                </div>
+
+
+                <div class="product-tehnical-info__data vm-flex">
+                    <div class="product-tehnical-info__specifications vm-flex vm-flex--column">
+                        {%- if section.settings.first_subtitle != blank -%}
+                            <h6 class="product-tehnical-info__subtitle">{{section.settings.first_subtitle}}</h6>
+                        {%- endif -%}
+
+                        {%- if section.settings.specifications != blank -%}
+                            <div >{{section.settings.specifications}}</div>
+                        {%- endif -%}
+                
+                    </div>
+
+                    <div class="product-tehnical-info__spectrum-warranty vm-flex vm-flex--column">
+                        <div class="product-tehnical-info__spectrum vm-flex vm-flex--column">
+                            {%- if section.settings.second_subtitle != blank -%}
+                                <h6 class="product-tehnical-info__subtitle">{{section.settings.second_subtitle}}</h6>
+                            {%- endif -%}
+
+                            {%- if section.settings.spectrum != blank -%}
+                                <div >{{section.settings.spectrum}}</div>
+                            {%- endif -%}
+                        </div>
+
+                        <div class="product-tehnical-info__warranty vm-flex vm-flex--column">
+                            {%- if section.settings.third_subtitle != blank -%}
+                                <h6 class="product-tehnical-info__subtitle">{{section.settings.third_subtitle}}</h6>
+                            {%- endif -%}
+
+                            {%- if section.settings.warranty != blank -%}
+                                <div >{{section.settings.warranty}}</div>
+                            {%- endif -%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{%- endif -%}
+
+<!-- <div class="product-additional-info">
+    {% render 'fda-badge' %}    
+    {% render 'user-manual' %}
+</div> -->
+
+
+{% schema %}
+{
+    "name": "Product tehnical info",
+    "class": "product-technical-info--container",
+    "settings": [
+        {
+            "type": "range",
+            "id": "top_spacing",
+            "min": 0,
+            "max": 50,
+            "step": 10,
+            "unit": "px",
+            "label": "Section top spacing",
+            "default": 20
+        },
+        {
+            "type": "range",
+            "id": "bottom_spacing",
+            "min": 0,
+            "max": 50,
+            "step": 10,
+            "unit": "px",
+            "label": "Section bottom spacing",
+            "default": 20
+        },
+        {
+            "type": "text",
+            "id": "first_title",
+            "label": "First title",
+            "default": "How it works:"
+        },
+        {
+            "type": "richtext",
+            "id": "first_content",
+            "label": "How it works"
+        },
+        {
+            "type": "text",
+            "id": "second_title",
+            "label": "Second title",
+            "default": "Benefits:"
+        },
+        {
+            "type": "richtext",
+            "id": "second_content",
+            "label": "Benefits content"
+        },
+        {
+            "type": "text",
+            "id": "third_title",
+            "label": "Third title",
+            "default": "Tehnicals Details"
+        },
+        {
+            "type": "richtext",
+            "id": "third_content",
+            "label": "Tehnicals content"
+        },
+        {
+            "type": "text",
+            "id": "first_subtitle",
+            "label": "First subtitle",
+            "default": "Specifications"
+        },
+        {
+            "type": "richtext",
+            "id": "specifications",
+            "label": "Specifications content"
+        },
+        {
+            "type": "text",
+            "id": "second_subtitle",
+            "label": "Second subtitle",
+            "default": "Spectrum"
+        },
+        {
+            "type": "richtext",
+            "id": "spectrum",
+            "label": "Spectrum content"
+        },
+        {
+            "type": "text",
+            "id": "third_subtitle",
+            "label": "Third subtitle",
+            "default": "Warranty"
+        },
+        {
+            "type": "richtext",
+            "id": "warranty",
+            "label": "Warranty content"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "FDA image"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product tehnical info",
+            "category": "Product info"
+        }
+    ]
+}
+{% endschema %}
+
+{% style %}
+    .product-tehnical-info--{{section.id}} {
+       margin-top: {{ section.settings.top_spacing}}px;
+       margin-bottom: {{ section.settings.bottom_spacing}}px;
+    }
+{% endstyle %}

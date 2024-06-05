@@ -1,0 +1,70 @@
+          <section
+        class="hero_banner_about bg_style"
+        style="background-image: url('{{ section.settings.banner | img_url: 'master' }}')"
+      >
+        <div class="container">
+          <div class="hero_txt_about">
+            <div class="hero_txt_under">
+              <h1>{{ section.settings.title }}</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="power_of_red_sec py_9">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-xl-0">
+              <div class="power_img">
+                <img src="{{ section.settings.healing_img | img_url: 'master' }}" alt="" />
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-xl-0">
+              <div class="power_sec">
+                <div class="under_txt_power">
+                  <h2>{{ section.settings.heal_title }}</h2>
+                {{ section.settings.heal_desc }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+{% schema %}
+  {
+    "name": "Banner and Healing Power",
+    "settings": [
+        {
+        "type": "image_picker",
+        "id": "banner",
+        "label":"banner_image"
+      },
+     {
+        "type": "text",
+        "id": "title",
+        "label":"Heading"
+      },
+      {
+        "type": "image_picker",
+        "id": "healing_img",
+        "label":"Healing Image"
+      },
+      {
+        "type": "text",
+        "id": "heal_title",
+        "label":"Healing Title"
+      },
+      {
+        "type": "richtext",
+        "id": "heal_desc",
+        "label":"Healing Description"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

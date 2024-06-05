@@ -1,0 +1,82 @@
+      <section class="treatment_come">
+        <ul class="row g-0 align-items-center">
+          <li class="treatment_come_list">
+            <div class="row g-0">
+              <div class=" col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
+                <div class="treat_us_img">
+                  <img src="{{ section.settings.img_left | img_url: 'master' }}" alt="" />
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="treat_us_cntnt_bx">
+                  <div class="treat_us_cntnt">
+                    <h2>{{ section.settings.left_title }}</h2>
+                   {{ section.settings.left_description }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="treat_us_cntnt_bx">
+            <div class="row g-0">
+              <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="treat_us_img">
+                  <img src="{{ section.settings.img_right | img_url: 'master' }}" alt="" />
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="about_us_cntnt_bx">
+                  <div class="treat_us_cntnt">
+                    <h2>{{ section.settings.right_title }}</h2>
+                    {{ section.settings.right_description }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+{% schema %}
+  {
+    "name": "treatment-come-from",
+    "settings": [
+       {
+        "type": "image_picker",
+        "id": "img_left",
+        "label": "Add Left Image"
+      },
+       {
+        "type": "text",
+        "id": "left_title",
+        "label": "Left Title"
+      },
+       {
+        "type": "richtext",
+        "id": "left_description",
+        "label": "Left Description"
+      },
+      {
+        "type": "image_picker",
+        "id": "img_right",
+        "label": "Add Left Image"
+      },
+       {
+        "type": "text",
+        "id": "right_title",
+        "label": "Right Title"
+      },
+       {
+        "type": "richtext",
+        "id": "right_description",
+        "label": "Right Description"
+      }
+     
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

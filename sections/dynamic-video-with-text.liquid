@@ -1,0 +1,82 @@
+
+<section class="product-description">
+  <div class="image-with-text p-tb">
+    <div class="video-with-text">
+        <div class="video-box">
+          <div class="embed-container ratio-16-9">
+           <video controls autoplay="autoplay">
+		<source src="{{ section.settings.video }}"/>
+	</video>
+	<button class="video-control">
+		<span class="video-control-play">
+			<span class="video-control-symbol" aria-hidden="true">
+              <img data-wpsob="1" data-wpsob-height="1" height="1" data-wpsob-width="1" width="1" data-wpsob-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0625/8370/1674/files/material-symbols_play-circle.png?v=1673410613"></span>
+			
+		</span>
+		<span class="video-control-pause">
+			<span class="video-control-symbol" aria-hidden="true">
+              <img data-wpsob="1" data-wpsob-height="1" height="1" data-wpsob-width="1" width="1" data-wpsob-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0625/8370/1674/files/icons8-pause-button-96.png?v=1673851880"></span>
+            </span>
+			<span class="video-control-label"></span>
+		</span>
+	</button>
+           
+         </div>
+        </div>
+      <div class="product-dec">
+        <h3>{{ section.settings.description_heading }} </h3>
+        <div class="single-product-text1">{{ section.settings.varient_description_1 }}</div>
+        <div class="single-product-text2">{{ section.settings.varient_description_2 }}</div>
+        <div class="single-product-text3">{{ section.settings.varient_description_3 }}</div>
+  
+      </div>
+    </div>    
+  </div>
+</section>
+<style>
+  
+</style>
+{% schema %}
+  {
+  "name": "Description section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "video",
+      "label": "video-box"
+    },
+    {
+      "type": "text",
+      "id": "description_heading",
+      "label": "description_heading"
+    },
+    {
+      "type": "richtext",
+      "id": "varient_description_1",
+      "label": "Varient Description 1"
+    },
+    {
+      "type": "richtext",
+      "id": "varient_description_2",
+      "label": "Varient Description 2"
+    },
+    {
+      "type": "richtext",
+      "id": "varient_description_3",
+      "label": "Varient Description 3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Description section"
+    }
+  ]
+}  
+{% endschema %}
+
+
+
+{% javascript %}
+
+
+{% endjavascript %}

@@ -1,0 +1,98 @@
+<style>
+  .pay-tags {
+      display: none;
+  }
+</style>
+<section class="our_product py_9 our_product_carosual">
+  <div class="container">
+    <div class="our_product_head text-center">
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+    <div class="row">
+      {%- for block in section.blocks -%}
+        {%- assign product = block.settings.product -%}
+        {% if product.featured_image != blank %}
+          <div class="col-md-4 mb-4">
+            <div class="our_service_crd">
+              <div class="crd_sec-txt">
+                <a href="{{ product.url }}">
+                  <div class="our_service_img">
+                    <img
+                      class="lazyload"
+                      src="{{ product.featured_image| product_img_url: 'original' }}"
+                      alt="{{ product.featured_image }}"
+                      width="332"
+                      height="300"
+                      loading="lazy"
+                    >
+                  </div>
+                </a>
+                <div class="our_service_txt">
+                  <a href="{{ product.url }}">
+                    <h3>{{ product.title }}</h3>
+                  </a>
+                  <!-- {{ product.description }} -->
+                  {{ block.settings.desc }}
+                </div>
+
+                <div class="star_sec">
+                  <div class="under_star_ses">
+                    <h3>{{ product.price | money }}</h3>
+                    <div class="star_img">
+                      <div style="{{ jm_style }}" class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+                        {{ product.metafields.judgeme.badge }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home Product-carousel",
+  "settings": [
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      }
+
+  ],
+    "blocks": [
+  {
+    "type": "product",
+    "name": "Product",
+    "settings": [
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Choose Product"
+      },
+       {
+        "type": "textarea",
+        "id": "desc",
+        "label": "Add product description"
+      }
+    ]
+  }
+    ],
+  "presets": [
+  {
+    "name": "Home Product-carousel"
+  }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

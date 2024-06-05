@@ -1,0 +1,169 @@
+.product-main {
+	.product-title {
+		color: $black;
+	}
+
+	.product-pricing {
+		margin: 0;
+
+	
+		.price__compare-at--single {
+			opacity: .4;
+		}
+
+		.money {
+			color: $red;
+			font-size: 22px;
+			font-weight: 900;
+		}
+	}
+
+	.product-form--atc {
+		display: flex;
+		flex-direction: column;
+		max-width: 355px;
+
+		.product-form--qty-and-atc-wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			.product-form--atc-qty {
+				height: 100%;
+			}
+
+			@include small-screen {
+				.product-form--atc-qty {
+					display: none;
+				}
+			}
+		}
+
+		@include small-screen {
+			width: 90vw;
+		}
+	}
+
+	.product-description {
+		display: flex;
+		flex-direction: column;
+
+		.delivery-sec {
+			display: flex;
+			align-items: center;
+			text-align: center;
+			gap: 10px;
+			margin-bottom: 10px;
+			font-weight: 600;
+
+			.delivery-row {
+				display: flex;
+				align-items: center;
+
+				.icone {
+					display: flex;
+					align-items: center;
+					margin-right: 10px;
+				}
+
+				a {
+					color: $black;
+				}
+			}
+
+			@include medium-screen {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+
+			@include small-screen {
+				align-items: center;
+			}
+		}
+
+		.rating-sec {
+			display: flex;
+			align-items: center;
+			text-align: center;
+			gap: 10px;
+
+			.exce-rati {
+				font-weight: 600;
+				display: flex;
+				align-items: center;
+
+				svg {
+					margin-inline: 5px;
+				}
+			}
+
+			a {
+				text-transform: uppercase;
+				text-decoration: underline;
+				font-weight: 600;
+			}
+
+			@include medium-screen {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+
+			@include small-screen {
+				align-items: center;
+			}
+		}
+
+		@include small-screen {
+			align-items: center;
+
+			p {
+				text-align: center;
+			}
+		}
+	}
+
+	#product-quantity-select {
+		border: $borderWidth solid red;
+		border-radius: 50px;
+		padding: 20px 40px 5px;
+	}
+
+	#product-quantity-input {
+		padding: 18px 10px 6px;
+	}
+
+	@include small-screen {
+		.product-details {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			.product-block--title h1 {
+				text-align: center;
+			}
+		}
+
+		.product-block--form {
+			width: 100%;
+
+			.product-form--atc {
+				max-width: 100%;
+				width: 100%;
+
+				.vm-button-container  {
+					width: 100%;
+
+					.vm-button {
+						width: 100%;
+						justify-content: flex-end;
+
+						.vm-button_inner-text {
+							margin-left: auto;
+							margin-right: auto;
+						}
+					}
+				}
+			}
+		}
+	}
+}

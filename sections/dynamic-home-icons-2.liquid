@@ -1,0 +1,64 @@
+<section class="icons-with-three-boxes">
+            <div class="icons-with-three-boxes-container">                
+                <div class="icons-with-three-boxes-row">
+                    <h2> {{ section.settings.icon_heading }}</h2>
+                    <div class="icons-with-three-boxes-list">
+                       {%- for block in section.blocks -%}
+                        {%- case block.type -%}
+
+                          {%- when 'icon_blocks' -%}
+                        <div class="box-with-icons-description">
+                            {%- assign block_icons = block.settings.block_icons -%}
+                              {{ block_icons | image_url: width: block_icons.width | image_tag: class: 'add_your_class_here', loading: 'lazy' }}
+                            <p>{{ block.settings.block_head }}</p>
+                        </div>
+                      {%- endcase -%}
+                          {%- endfor -%}
+                        
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
+{% schema %}
+  {
+    "name": "Benifits Icons 2",
+    "settings": [
+      {
+          "type": "text",
+          "id": "icon_heading",
+          "label": "Icon Heading"
+        }
+    ],
+    "blocks": [
+    {
+      "name": "Icon Blocks",
+      "type": "icon_blocks",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "block_icons",
+          "label": "Block icons",
+          "info": "Block icons"
+        },
+        {
+          "type": "text",
+          "id": "block_head",
+          "label": "Block Head"
+        }
+      ]
+    }
+  ],
+     "presets": [
+    {
+      "name": "Benifits Icons 2"
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,18 @@
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{% comment %} Use string splitting to pull the value from content_for_header and apply some string clean up {% endcomment %}
+{%- assign pageUrl = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last |
+   replace:'\/','/' | 
+   replace:'%20',' ' | 
+   replace:'\u0026','&'
+-%}
+
+{% if pageUrl contains "aduro-7-1-led-face-mask" %}
+  <div class="product-user-manual">
+      <a class="product-user-manual__pdf-link" href="https://files.elfsight.com/storage/c901215b-4712-4355-b18d-ab78fd466b6d/6a571a34-a998-4a19-9f27-8149e56c85b9.pdf?_ga=2.138239859.2112542272.1660292746-2066820336.1656945528" target="_blank" rel="noopener noreferrer nofollow">
+        <div class="product-user-manual__img">
+          <img src="https://files.elfsight.com/storage/c901215b-4712-4355-b18d-ab78fd466b6d/9a3e8c26-a229-435c-a721-4733320a0518.png" class="jsx-394840270 eapp-pdf-embed-icon-image">
+        </div>
+        <span class="product-user-manual__name">Aduro User Manual Download</span>
+      </a>
+  </div>
+{% endif %}

@@ -1,0 +1,76 @@
+
+   
+ <section class="hero_banner bg_style home_video">
+ <video id="myVideo" poster="" src="https://cdn.shopify.com/videos/c/o/v/fd86db16179a44d0a2a1d2c0bef32a82.mp4" type="video/mp4" preload="auto" muted="muted" playsinline="" autoplay="autoplay" loop="loop" style="visibility: visible"></video> 
+            
+        <div class="container">
+          <div class="under_section">
+            <div class="text_hero_banner">
+              <h4>{{ section.settings.tagline }}</h4>
+              <h1>{{ section.settings.heading }}</h1>
+             
+               {{ section.settings.description }}
+            
+              <div class="hero-banner_btn">
+                <a href="{{ section.settings.btn-url }}" class="theme_btn">{{ section.settings.btn-title }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+  </section>
+
+{% schema %}
+  {
+    "name": "Home Banner",
+    "settings": [
+     {
+      "type": "url",
+      "id": "url",
+      "label": "Video URL"
+      },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "tagline",
+          "label": "Tag Line"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Headding"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+      {
+          "type": "text",
+          "id": "btn-title",
+          "label": "Button Title"
+        },
+      {
+          "type": "url",
+          "id": "btn-url",
+          "label": "Button URL"
+      }
+       
+      
+    ],
+     "presets": [
+    {
+      "name": "Home Banner"
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

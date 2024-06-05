@@ -1,0 +1,57 @@
+<section class="relive_pain da_ys">
+        <div class="container">
+          <div class="row">
+
+            {% for block in section.blocks %}
+            <div class="col-md-3 mb-4">
+              <div class="relieve_pain_txt">
+                <div class="relieve_img">
+                  <img data-wpsob="1" data-wpsob-height="1" height="1" data-wpsob-width="1" width="1" data-wpsob-lazy="1" loading="lazy" src="{{ block.settings.img | img_url: 'master' }}" alt="">
+                  <p>{{ block.settings.title }}</p>
+                </div>
+              </div>
+            </div>
+  {% endfor %}
+
+          </div>
+        </div>
+      </section>
+
+{% schema %}
+  {
+    "name": "Product Last Blocks",
+    "settings": [],
+    "blocks": [
+    {
+      "type": "policy_blocks",
+      "name": "Policy Blocks",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+          
+        },
+        {
+        "type": "image_picker",
+        "id": "img",
+        "label":"Image"
+      }
+       
+      ]
+    }
+  ],
+    
+     "presets": [
+       {
+       "name": "Product Last Blocks"
+       }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

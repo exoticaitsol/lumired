@@ -1,0 +1,113 @@
+<section class="our_blog py_9">
+  <div class="container">
+    <div class="heading_our">
+      <h2>{{ section.settings.title }}</h2>
+      <p>{{ section.settings.subtitle }}</p>
+    </div>
+    <div class="row">
+      {%- assign blog = blogs[section.settings.blog] -%}
+
+      {%- if blog.articles_count > 0 -%}
+        {%- for article in blog.articles limit: section.settings.post_limit -%}
+          <div class="col-md-4 mb-4">
+            <div class="our_blog_sec">
+              <div class="img_sec">
+                <a href="{{ article.url }}">
+                  <img
+                    class="lazyload"
+                    src="{{ article | img_url: 'original' }}"
+                    alt="{{ article }}"
+                    width="{{ article.width }}"
+                    height="{{ article.height }}"
+                    loading="lazyimage"
+                  >
+                </a>
+              </div>
+              <div class="our_blog_txt">
+                <span> {{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+                <h3>{{ article.title }}</h3>
+                <p>
+                  {{ article.content | truncate: 150 }}
+                </p>
+                <div class="arrowq">
+                  <a href="{{ article.url  }}" class="read_more">Read More</a>
+                  <img
+                    class="lazyload"
+                    src="https://cdn.shopify.com/s/files/1/0625/8370/1674/files/arrow_3607daf7-6fde-421e-b54c-6df3f136c91d.png?v=1695815192"
+                    alt="arrow_3607daf7-6fde-421e-b54c-6df3f136c91d.png?"
+                    width="22"
+                    height="13"
+                    loading="lazyimage"
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog posts",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Blog posts"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sub Heading",
+      "default": "Blog posts"
+    },
+    {
+      "id": "blog",
+      "type": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "range",
+      "id": "post_limit",
+      "label": "Posts",
+      "min": 3,
+      "max": 12,
+      "step": 3,
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_author",
+      "label": "Show author",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_date",
+      "label": "Show date",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View all' button",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog posts",
+      "category": "Blog",
+      "settings": {
+        "blog": "News",
+        "post_limit": 3
+      }
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,136 @@
+
+ <style>
+.anouncementbar .alert {
+    position: relative;
+    top: unset;
+    width: 100%;
+    overflow: hidden;
+    position: unset;
+    padding: unset;
+    margin-bottom: unset;
+    border: unset;
+    border-radius: unset;
+}
+.anouncementbar .alert__line {
+  display: flex;
+  padding: 10px 0;
+  background-color: #0c0c0c;
+}
+
+.anouncementbar .alert__message {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--gap) / 2 - 2px);
+  font-size: 18px;
+  left: 0;
+  line-height: 130%;
+  white-space: nowrap;
+  color: #fff;
+  justify-content: center;
+    width: 100%;
+}
+   .anouncementbar .alert__message p {
+     color: #fff;
+     margin-bottom: 0;
+     margin-left: 50px;
+     margin-right: 50px;
+     text-align: center;
+   }
+        
+    </style>
+    
+<section class="anouncementbar">
+
+  <div class="alert">
+  <div class="alert__line" id="marquee">
+    <div class="alert__message">
+{{ section.settings.uk_ann }}
+      <!-- <p><strong>Free UK Delivery : </strong> Shipped from UK Warehouse</p> -->
+    </div>
+  </div>
+</div>
+
+</section>
+
+<script>
+
+//   const speed = 1; // pixels at frame
+// const gap = getComputedStyle(document.querySelector("body")).getPropertyValue(
+//   "--gap"
+// ); // IMPORTANT: value should be equal to --gap variable at css
+// const marquee = document.querySelector("#marquee");
+
+// const newItem = () => {
+//   return marquee.querySelector("div").cloneNode(true);
+// };
+
+// const numerify = (str) => {
+//   return +str.replaceAll(/[^\d-]/g, "");
+// };
+
+// const fillMarquee = () => {
+//   while (
+//     marquee.querySelectorAll("div").length < 2 ||
+//     (marquee.querySelector("div").clientWidth + numerify(gap)) *
+//       marquee.querySelectorAll("div").length -
+//       numerify(gap) <
+//       window.innerWidth * 1.5
+//   ) {
+//     marquee.append(newItem());
+//   }
+
+//   marquee.querySelectorAll("div").forEach((item) => {
+//     if (item.style.position !== "absolute") item.style.position = "relative";
+//   });
+// };
+// fillMarquee();
+// window.addEventListener("resize", fillMarquee);
+
+// const render = () => {
+//   marquee.querySelectorAll("div").forEach((item) => {
+//     if (item.offsetLeft < 0 && item.offsetLeft < -item.offsetWidth) {
+//       marquee.querySelectorAll("div").forEach((e) => {
+//         e.style.left = numerify(gap) / 2 - 1 + "px";
+//       });
+//       item.remove();
+//       marquee.append(newItem());
+//     }
+//     item.style.left = `${numerify(item.style.left) - speed}px`;
+//   });
+//   requestAnimationFrame(render);
+// };
+
+// requestAnimationFrame(() => {
+//   render();
+// });
+
+</script>
+
+
+{% schema %}
+  {
+    "name": "uk announcement bar",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "uk_ann",
+        "label": "UK announcement text"
+      }
+
+  ],
+    "presets": [
+       {
+       "name": "uk announcement bar"
+       }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+

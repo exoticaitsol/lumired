@@ -1,0 +1,51 @@
+      <section class="rlt_miracle py_9">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-5">
+              <div class="rlt_img">
+                <img src="{{ section.settings.image | img_url: 'master' }}" alt="" />
+              </div>
+            </div>
+            <div class="col-md-7">
+              <div class="rlt_txt">
+                <div class="under_rlt_txt">
+                  <h2>{{ section.settings.title }}</h2>
+                  <p>
+                    {{ section.settings.desc }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+{% schema %}
+  {
+    "name": "RLT miracle",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label":"Add Image"
+      },
+     {
+        "type": "text",
+        "id": "title",
+        "label":"Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "desc",
+        "label":"description"
+      }
+      
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

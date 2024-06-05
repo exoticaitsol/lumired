@@ -1,0 +1,34 @@
+<ul class="vm-site-header-actions" data-header-actions>
+  {% if shop.customer_accounts_enabled %}
+    {% unless customer %}
+      <li>
+        <!-- <span class="site-header__account-icon">
+          {% render 'icon-library', id: 'icon-account' %}
+        </span> -->
+        <a href="{{ routes.account_login_url }}" class="site-header_account-link-text vm-icon-wrapper">
+          <!-- {{ 'header.account.login' | t }} -->
+           <span class="site-header__account-icon">
+            <!-- {% render 'icon-library', id: 'icon-account' %} -->
+            {% render 'vm-icons' with icon: 'login' %} 
+          </span>
+        </a>
+      </li>
+    {% else %}
+      <li>
+        <!-- <span class="site-header__account-icon">
+          {% render 'icon-library', id: 'icon-account' %}
+        </span> -->
+        <span class="site-header__account-links">
+         <a href="{{ routes.account_url }}" class="site-header__account-link--account">
+            <span class="site-header__account-icon">
+              <!-- {% render 'icon-library', id: 'icon-account' %} -->
+              {% render 'vm-icons' with icon: 'login' %} 
+            </span>
+          </a>
+         <a href="{{ routes.account_logout_url }}" class="site-header__account-link--logout" data-no-instant>{{ 'header.account.logout' | t }}</a>
+        </span>
+      </li>
+    {% endunless %}
+  {% endif %}
+  
+</ul>

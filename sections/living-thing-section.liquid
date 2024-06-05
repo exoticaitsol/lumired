@@ -1,0 +1,94 @@
+<section
+  class="living_things bg_style"
+  style="background-image: url('{{section.settings.bg_image | img_url: 'original' }}')"
+>
+  <div class="container">
+    <div class="heading_txt">
+      <h2>{{ section.settings.main }}</h2>
+    </div>
+    <div class="row">
+      {% for block in section.blocks %}
+        <div class="col-md-4 mb-4">
+          <div class="living_things_txt">
+            <div class="living_txt">
+              <div class="img_living">
+                <img
+                  class="lazyload"
+                  src="{{ block.settings.img| img_url: 'master' }}"
+                  alt="{{ block.settings.img }}"
+                  width="{{ block.settings.img.width }}"
+                  height="{{ block.settings.img.height }}"
+                  loading="lazy"
+                >
+
+                {{ block.settings.description }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+      <div class="sunlight_survive">
+        <h3>
+          {{ section.settings.survive_title }}
+        </h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Living things Section",
+  "settings": [
+      {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label":"Background Image"
+    },
+    {
+      "type": "text",
+      "id": "survive_title",
+      "label":"Survive Heading"
+    },
+    {
+      "type": "text",
+      "id": "main",
+      "label":"Heading"
+    }
+  ],
+  "blocks": [
+  {
+    "type": "living_thing_list",
+    "name": "living_thing_list",
+    "settings": [
+
+      {
+      "type": "image_picker",
+      "id": "img",
+      "label":" Image"
+    },
+       {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description"
+
+      }
+
+    ]
+  }
+],
+
+   "presets": [
+     {
+     "name": "Living things Section"
+     }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

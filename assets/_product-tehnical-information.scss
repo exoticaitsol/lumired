@@ -1,0 +1,54 @@
+.product-tehnical-info {
+	position: relative;
+
+	p {
+		line-height: 1.5;
+	}
+
+	.product-tehnical-info__wrapper {
+		position: relative;
+
+		.product-tehnical-info__title {
+			color: $red;
+			font-size: 26px;
+			font-weight: 900;
+			text-transform: uppercase;
+			margin: 0;
+		}
+
+		.product-tehnical-info__subtitle {
+			color: $red;
+			font-size: 16px;
+			font-weight: 400;
+			text-transform: capitalize;
+			margin: 0;
+			padding-top: 20px;
+		}
+
+		.product-tehnical-info__first-container {
+			padding-right: 60px;
+			gap: 20px;
+
+			@include small-screen {
+				padding-right: 0;
+				padding-left: 0;
+			}
+		}
+
+		.product-tehnical-info__second-container {
+			.product-tehnical-info__data {
+				justify-content: space-between;
+				gap: 20px;
+			}
+
+			@include small-screen {
+				padding-top: 20px;
+			}
+		}
+
+		@include small-screen {
+			flex-direction: column;
+			padding-left: 0;
+		}
+	}
+}

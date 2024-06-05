@@ -1,0 +1,63 @@
+ <section class="shop_all_targeted py_9">
+        <div class="container">
+          <div class="row">
+
+            {%- for block in section.blocks -%}
+            {%- assign collection = block.settings.collection -%}
+            <div class="col-md-3">
+              <div class="tagreted_sec_shop">
+                <div class="img_targeted">
+                  <img src="{{ block.settings.collection_img | img_url: 'master' }}" alt="" />
+                </div>
+                <div class="tagrgeted_txt">
+                  <h2> {{ collection.title | escape }}</h2>
+                       {{ collection.description | truncate : '100' }}
+                  <div class="arrowq">
+                    <a href="{{ collection.url }}" class="read_more">Shop All</a>
+                    <img src="https://cdn.shopify.com/s/files/1/0625/8370/1674/files/arrow_3607daf7-6fde-421e-b54c-6df3f136c91d.png?v=1695815192" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            {%- endfor -%}
+
+          </div>
+        </div>
+      </section>
+
+{% schema %}
+  {
+    "name": "collection",
+    "settings": [],
+  "blocks": [
+    {
+      "type": "Collection",
+      "name": "Collection block",
+      "settings": [
+        {
+      "type": "image_picker",
+      "id": "collection_img",
+      "label": "Add Collection Image"
+        },
+        {
+      "type": "collection",
+      "id": "collection",
+      "label": "Add Collection"
+        }
+    ]
+
+    }
+  ],
+  "presets": [
+    {
+      "name": "products"
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

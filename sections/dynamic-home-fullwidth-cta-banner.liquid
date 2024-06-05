@@ -1,0 +1,64 @@
+{%- if section.settings.background-img != blank -%}
+        {%- assign img_url = section.settings.background-img | img_url: '  ' -%}   
+         <style>
+         section.full-banner-cta{
+            background: url('{{ img_url }}');
+            background-repeat: no-repeat;
+    background-size: cover;
+            
+          }
+        </style>
+<section class="full-banner-cta">
+   {%- assign background-img = section.settings.background-img -%}
+            <div class="full-banner-cta-container">
+                <div class="full-banner-cta-row">
+                    <h2>{{ section.settings.banner-heading }}</h2>
+                    <a href="{{ section.settings.link }}" class="vm-button-red">{{ section.settings.linktext }}</a>
+                </div>                
+            </div>
+        </section>
+  {%- endif -%}
+{% schema %}
+  {
+    "name": "Full Width CTA Banner",
+    "settings": [
+    {
+      "type": "text",
+      "id": "banner-heading",
+      "label": "Banner Heading",
+      "default": "Banner Heading",
+      "placeholder": "Banner Heading",
+      "info": "Banner Heading"
+    },
+    {
+          "type": "image_picker",
+          "id": "background-img",
+          "label": "Background Img",
+          "info": "Background Image"
+        }
+      ,
+    {
+      "id": "link",
+      "type": "url",
+      "label": "Button link"
+    },
+    {
+      "id": "linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Click Here"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Full Width CTA Banner"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

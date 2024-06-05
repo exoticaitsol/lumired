@@ -1,0 +1,48 @@
+
+
+
+<section class="main-product">
+  {%- section 'lumired-static-product' -%}
+</section>
+
+<section class="product-description">
+  {%- section 'dynamic-video-with-text' -%}
+</section>
+
+ 
+
+<section class="product-comparision ">
+  {%- section 'dynamic-product-comparision-table' -%}
+</section>
+
+
+  {%- section 'dymanic-shop-with-confidence' -%}
+
+
+
+  {%- section 'dynamic-lumipro-about' -%}
+
+
+<section class="faq-sec">
+  {% section "dynamic-faq-accordion" %}
+</section>
+ {% section "judgeme_carousel_section" %}
+<section class="rating-review">
+    <div class="p-tb image-with-text">
+      <div id="judgeme_product_reviews"
+  class="jdgm-widget jdgm-review-widget" data-product-title="{{ product.title }}" data-id="{{
+  product.id }}">
+        {{ product.metafields.judgeme.widget }}
+      </div>    
+  </div>
+</section>
+
+<section class="product-recommendation">
+  <div class="p-tb">
+    {%- section 'static-lumipro-product-recommendations' -%}
+  </div>
+</section>
+<style>
+  
+ 
+</style>

@@ -1,0 +1,74 @@
+<section class="about_us py_9">
+  <div class="container">
+    <div class="row g-0 align-items-center">
+      <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 mb-4 mb-xl-0">
+        <div class="about_us_img">
+          <img
+            class="lazyload"
+            src="{{ section.settings.about_img| img_url: 'original' }}"
+            alt="about_img"
+            width="490"
+            height="556"
+            loading="lazy"
+          >
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7 mb-4 mb-xl-0">
+        <div class="about_us_cntnt">
+          <h2>{{ section.settings.title }}</h2>
+          {{ section.settings.description }}
+          <div class="about_us_btn">
+            <a href="{{ section.settings.button_url }} " class="theme_btn">{{ section.settings.button_title }} </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home About Section",
+  "settings": [
+
+     {
+      "type": "image_picker",
+      "id": "about_img",
+      "label":"About Image"
+    },
+      {
+      "type": "text",
+      "id": "title",
+      "label":"Heading"
+    },
+
+    {
+      "type": "richtext",
+      "id": "description",
+      "label":"Description"
+    },
+    {
+      "type": "text",
+      "id": "button_title",
+      "label":"Button Title"
+    },
+     {
+      "type": "url",
+      "id": "button_url",
+      "label":"Button Url"
+    }
+
+  ],
+    "presets": [
+     {
+     "name": "Home About Section"
+     }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

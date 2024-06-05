@@ -1,0 +1,29 @@
+.calendly {
+	display: inline-flex;
+	flex-direction: column;
+
+	&--border-top {
+		border-top: 1px solid #eee;
+	}
+
+	p {
+		text-align: center;
+	}
+
+	a {
+		color: $black;
+		text-decoration: none;
+		border: 1px solid $red;
+		padding: 15px;
+		border-radius: 25px;
+		text-align: center;
+        width: 100%;
+	}
+}
+
+@include small-screen {
+	.calendly {
+		align-items: center;
+		width: 100% !important;
+	}
+}

@@ -1,0 +1,259 @@
+<footer class="footer_sec">
+  <div class="main_footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-12">
+          <div class="company_bio">
+            <div class="footer_logo">
+              <a href="{{ section.settings.link_url }}">
+                <img
+                  class="lazyload"
+                  src="{{ section.settings.footer_logo| img_url: 'original' }}"
+                  alt="{{ section.settings.footer_logo }}"
+                  width="{{ section.settings.footer_logo.width }}"
+                  height="{{ section.settings.footer_logo.height }}"
+                  loading="lazyimage"
+                >
+              </a>
+            </div>
+            {% if request.host contains 'lumired.ie' %}
+              {{ section.settings.footer_description }}
+
+            {% elsif request.host contains 'lumired.co.uk' %}
+              {{ section.settings.uk_footer_description }}
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-md-3 col-12">
+          <div class="footer_link_list">
+            <div class="footer_head">
+              <h3>{{ section.settings.menu_title1 }}</h3>
+            </div>
+            <ul class="quick_links">
+              {%- for link in section.settings.first_menu.links -%}
+                <li>
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3 col-12">
+          <div class="footer_link_list">
+            <div class="footer_head">
+              <h3>{{ section.settings.menu_title2 }}</h3>
+            </div>
+            <ul class="quick_links">
+              {% if request.host contains 'lumired.ie' %}
+                {% for link in section.settings.second_menu.links %}
+                  <li>
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              {% elsif request.host contains 'lumired.co.uk' %}
+                {% for link in section.settings.second_menu.links %}
+                  <li>
+                    {% if link.url == '/pages/delivery-returns' %}
+                      <a href="/pages/uk-delivery-and-returns">{{ link.title }}</a>
+                    {% else %}
+                      <a href="{{ link.url }}">{{ link.title }}</a>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-2 col-12">
+          <div class="footer_link_list">
+            <div class="footer_head">
+              <h3>{{ section.settings.menu_title3 }}</h3>
+            </div>
+            {% if request.host contains 'lumired.ie' %}
+              <div class="Follow_link">
+                <ul class="quick_links">
+                  {% for block in section.blocks %}
+                    {% if block.type == 'get_in_touch' %}
+                      <li>
+                        {% if block.settings.link != blank %}
+                          <a href=" {{ block.settings.link }} ">
+                        {% endif -%}
+                        {{- block.settings.detail }}
+                        {% if block.settings.link != blank %}
+                          </a>
+                        {% endif %}
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+            {% if request.host contains 'lumired.co.uk' %}
+              <div class="Follow_link">
+                <ul class="quick_links">
+                  {% for block in section.blocks %}
+                    {% if block.type == 'uk_get_in_touch' %}
+                      <li>
+                        {% if block.settings.link != blank %}
+                          <a href=" {{ block.settings.link }} ">
+                        {% endif -%}
+                        {{- block.settings.detail }}
+                        {% if block.settings.link != blank %}
+                          </a>
+                        {% endif %}
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copyright_bar">
+    <div class="container">
+      <div class="copy_text text-center">
+        <p>
+          © {{ 'now' | date: '%Y' }}
+          {{ section.settings.copyright }}
+        </p>
+        <p class="copy1">{{ section.settings.copyright1 }}</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Main Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Footer Logo"
+    },
+    {
+         "type": "url",
+         "id": "link_url",
+         "label": "Add detail Link"
+       },
+     {
+      "type": "richtext",
+      "id": "footer_description",
+      "label": "Footer Description"
+    },
+    {
+      "type": "richtext",
+      "id": "uk_footer_description",
+      "label": "Footer Description For UK"
+    },
+           {
+      "type": "text",
+      "id": "menu_title1",
+      "label": "First Menu Title "
+    },
+     {
+      "type": "text",
+      "id": "menu_title2",
+      "label": "Second Menu Title "
+    },
+     {
+      "type": "text",
+      "id": "menu_title3",
+      "label": "Third Menu Title "
+    },
+     {
+         "type": "link_list",
+         "id": "first_menu",
+         "label": "First Second Menu"
+       },
+     {
+         "type": "link_list",
+         "id": "second_menu",
+         "label": "Choose Second Menu"
+       },
+
+     {
+         "type": "text",
+         "id": "copyright",
+         "label": "Copyright Text"
+       },
+     {
+         "type": "text",
+         "id": "copyright1",
+         "label": "Copyright Tagline"
+       }
+  ],
+       "blocks": [
+
+   {
+     "name": "get_in_touch",
+     "type": "get_in_touch",
+     "settings": [
+
+       {
+         "type": "text",
+         "id": "detail",
+         "label": "Add detail"
+       },
+       {
+         "type": "url",
+         "id": "link",
+         "label": "Add detail Link"
+       }
+     ]
+   },
+
+   {
+     "name": "uk_get_in_touch",
+     "type": "uk_get_in_touch",
+     "settings": [
+
+       {
+         "type": "text",
+         "id": "detail",
+         "label": "Add detail"
+       },
+       {
+         "type": "url",
+         "id": "link",
+         "label": "Add detail Link"
+       }
+     ]
+   },
+
+           {
+    "type": "relieve_blocks",
+    "name": "relieve_blocks",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "relieve_icon",
+        "label": "Add Icon"
+      },
+       {
+        "type": "text",
+        "id": "relieve_title",
+        "label": "Add Title"
+       }
+    ]
+  }
+
+],
+
+  "presets": [
+  {
+    "name": "Main Footer"
+  }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,85 @@
+<section class="home-products">
+            <div class="home-products-container">
+                <div class="home-products-row">
+                    <h2>{{ section.settings.collection-heading }}</h2>
+                    <div class="home-products-list">
+                      {%- for block in section.blocks -%}
+                        {%- case block.type -%}
+
+                          {%- when 'collection_blocks' -%}
+                        <div class="home-product-box">
+                            <div class="home-product-box-img-wrap">
+                                {%- assign collection_icons = block.settings.collection_icons -%}
+                              {{ collection_icons | image_url: width: collection_icons.width | image_tag: class: 'add_your_class_here', loading: 'lazy' }}
+                            </div>
+                            <div class="home-product-box-description-wrap">
+                                <h4>{{ block.settings.collection_head }}</h4>
+                                <p>{{ block.settings.collection_details }}</p>
+                                <a href="{{ block.settings.link }}" class="vm-button-red">{{ block.settings.linktext }}</a>
+                            </div>
+                         
+                        </div>
+                         {%- endcase -%}
+                          {%- endfor -%}
+                    </div>
+                </div>
+            </div>
+        </section>
+ {% schema %}
+  {
+    "name": "Collections section",
+    "settings": [
+      {
+          "type": "text",
+          "id": "collection-heading",
+          "label": "Collection Heading"
+        }
+    ],
+    "blocks": [
+    {
+      "name": "Collection Blocks",
+      "type": "collection_blocks",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "collection_icons",
+          "label": "Collection icons",
+          "info": "Collection icons"
+        },
+        {
+          "type": "text",
+          "id": "collection_head",
+          "label": "Collection Head"
+        },
+        {
+          "type": "text",
+          "id": "collection_details",
+          "label": "Collection Details"
+        },
+        {
+      "id": "link",
+      "type": "url",
+      "label": "Button link"
+    },
+    {
+      "id": "linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Click Here"
+    }
+      ]
+    }
+  ],
+     "presets": [
+    {
+      "name": "Collections section"
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
